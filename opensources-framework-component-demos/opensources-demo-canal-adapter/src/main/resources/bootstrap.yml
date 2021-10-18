@@ -1,0 +1,22 @@
+opensourceframework.swagger:
+  enable: true
+  basePackage: org.opensourceframework
+  title: opensources--canal-adapter API
+  description: opensources--canal-adapter API
+  version: 1.0.0
+
+
+management:
+  server.port: 8001
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env,beans
+    dubbo:
+      enabled: true
+    dubbo-services:
+      enabled: true
+spring:
+  profiles:
+    active: company

@@ -1,0 +1,85 @@
+opensourceframework.log.version:
+opensourceframework.env.logger.level:
+opensourceframework.env.module:
+
+nacos:
+  service:
+    group: ${opensourceframework.env.module}
+    version: ${opensourceframework.service.version}
+    #是否注册DubboMetaDataService
+    metadata-enabled: false
+    namespace: ${opensourceframework.service.namespace}
+    address: ${opensourceframework.service.address}
+  # nacos config server配置 不使用时注释
+  config:
+    group: ${opensourceframework.config.group}
+    namespace: ${opensourceframework.service.namespace}
+    sharedDataIds: ${opensourceframework.config.dataIds}
+    refreshableDataids: ${opensourceframework.config.dataIds}
+
+server:
+  port: ${opensourceframework.server.port}
+
+spring:
+  profiles:
+    active: ${opensourceframework.profiles.active}
+  application:
+    name: ${opensourceframework.env.module}
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      # SpringCloud GateWay路由规则配置
+      routes:
+      - id: yml-opensources-user-center
+        uri: lb://opensources-user-center
+        predicates:
+        - Path=/yml-opensources-user-center/**
+        filters:
+        - StripPrefix=1
+      - id: opensources-user-application
+        uri: lb://opensources-user-application
+        predicates:
+        - Path=/yml-opensources-user-application/**
+        filters:
+        - StripPrefix=1
+
+    nacos:
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: ${nacos.service.address}
+        group: ${nacos.service.group}
+        namespace: ${nacos.service.namespace}
+
+      # 使用nacos做为config server
+      config:
+        # 不是使用nacos 作为配置中心 设置为false
+        enabled: true
+        server-addr: ${nacos.service.address}
+        group: ${nacos.config.group}
+        namespace: ${nacos.service.namespace}
+        shared-data-ids: ${nacos.config.sharedDataIds}
+        refreshable-dataids: ${nacos.config.refreshableDataids}
+        # 以下为最新的写法
+        #shared-configs[0]:
+        #  dataId:
+        #  group:
+        #  refresh:
+        #shared-configs[1]:
+        #  dataId:
+        #  group:
+        #  refresh:
+    zookeeper:
+      enabled: false
+    consul:
+      enabled: false
+dubbo:
+  cloud:
+    subscribed-services:
+
+

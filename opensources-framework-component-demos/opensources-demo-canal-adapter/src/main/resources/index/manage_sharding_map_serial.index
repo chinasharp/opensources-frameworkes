@@ -1,0 +1,82 @@
+POST manage_sharding_map_serial/manage_sharding_map_serial/_mapping
+{
+    "manage_sharding_map_serial": {
+	    "dynamic": true,
+	    "_all": {
+	        "enabled": false
+	    },
+	    "properties":{
+	      "id": {
+	         "type": "long"
+	      },
+	      "map_key": {
+	         "type": "keyword"
+	      },
+	      "serial_no": {
+	         "type": "long"
+	      },
+	      "sys_no": {
+	         "type": "keyword"
+	      },
+	      "core_serial_no": {
+	         "type": "keyword"
+	      },
+	      "application_id": {
+	         "type": "long"
+	      },
+	      "create_person": {
+	         "type": "keyword"
+	      },
+	      "create_time": {
+	         "type": "date"
+	      },
+	      "create_time_stamp": {
+	         "type": "long"
+	      },
+	      "update_person": {
+	         "type": "keyword"
+	      },
+	      "update_time": {
+	         "type": "date"
+	      },
+	      "update_time_stamp": {
+	         "type": "long"
+	      },
+	      "dr": {
+	         "type": "short"
+	      }
+	    }
+    }
+}
+
+# 查看mapping
+GET manage_sharding_map_serial/_mapping
+
+# 查询所有
+GET manage_sharding_map_serial/manage_sharding_map_serial/_search
+{
+    "query":{"match_all":{}}
+}
+
+# 查询
+GET manage_sharding_map_serial/manage_sharding_map_serial/_search
+{
+    "query":{
+        "match":{
+            "serial_no":326412228012862464
+        }
+    },
+    "sort":[
+        {
+            "create_time_stamp":"desc"
+        }
+   ]
+}
+
+# 分页查询
+GET manage_sharding_map_serial/manage_sharding_map_serial/_search
+{
+    "query":{"match_all":{}},
+    "from":0,
+    "size":10
+}

@@ -1,0 +1,17 @@
+opensourceframework.log.version: 1.0.0-SNAPSHOT
+opensourceframework.env.logger.level: DEBUG
+opensourceframework.env.module: opensources-demo-netty-rpc-consumer
+opensourceframework.profiles.active: dev
+opensourceframework.server.port: 8081
+
+
+server:
+  port: ${opensourceframework.server.port}
+
+spring:
+  profiles:
+    active: ${opensourceframework.profiles.active}
+  application:
+    name: ${opensourceframework.env.module}
+  main:
+    allow-bean-definition-overriding: true

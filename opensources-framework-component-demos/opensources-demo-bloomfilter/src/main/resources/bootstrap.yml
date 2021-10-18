@@ -1,0 +1,25 @@
+#日志目录
+opensourceframework.log.workdir: ../../logs
+opensourceframework.env.logger.level: info
+opensourceframework.env.module:
+
+server.port: 8081
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: opensources-user-bloomfilter
+  aop:
+    proxy-target-class: true
+  main:
+    allow-bean-definition-overriding: true
+
+# 可配置到nacos
+mybatis:
+  #指定mybatis xml映射文件的资源路径
+  mapperLocations: classpath*:com/opensourceframework/user/bloomfilter/mybatis/mapper/*.xml
+  #指定mybatis 类型别名
+  typeAliasesPackage:
+  #指定mybatis 配置文件的资源路径
+  configLocation:

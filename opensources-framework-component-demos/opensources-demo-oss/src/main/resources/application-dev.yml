@@ -1,0 +1,44 @@
+# swagger相关配置
+# 注意：
+#     需手动修改的配置
+#     basePackage属性：需修改为rest包所在的全限定路径（通常只需将xxx替换为中心的英文名即可）
+#     title属性：       将xxx修改为对应中心的中文名即可。（生成的swagger文档的标题）
+#     description属性： 将xxx修改为对应中心的中文名即可。（生成的swagger文档的描述）
+opensourceframework.swagger:
+      enable: true
+      basePackage: org.opensourceframework
+      title: 阿里云OSS存储使用demo
+      description: 阿里云OSS存储使用demo
+      version: 1.0.0
+
+#Redis 连接配置
+opensourceframework.redis.registryvo.addresses: 127.0.0.1:6379
+opensourceframework.redis.registryvo.livetime: 86370
+opensourceframework.redis.registryvo.authPwd: opensourceframework
+opensourceframework.redis.registryvo.maxIdle: 300
+opensourceframework.redis.registryvo.maxTotal: 500
+opensourceframework.redis.registryvo.workModel: single
+
+# 混合缓存是否开启本地缓存
+opensourceframework.mix.cache.local.flag: true
+# 混合缓存是否开启分布式缓存
+opensourceframework.mix.cache.remote.flag: true
+# 同步分布是缓存是否使用异步方式 false为同步方式
+opensourceframework.mix.cache.enable.async: true
+
+# MQ链接配置
+opensourceframework.mq.config.registryvo.nameSrvAddr: 127.0.0.1:9876
+opensourceframework.mq.config.registryvo.accessKey:
+opensourceframework.mq.config.registryvo.secretKey:
+opensourceframework.mq.config.registryvo.producerId: PID_OPENSOURCEFRAMEWORK_DEMO
+opensourceframework.mq.config.registryvo.consumeThreadNums: 5
+
+#aliyun oss configure
+aliyun.oss.bucketName:
+aliyun.oss.endPoint:
+aliyun.oss.accessKeyId:
+aliyun.oss.accessKeySecret:
+aliyun.oss.accessUrlPrefix:
+
+#图片增加压缩后缀
+img.Suffix: ?x-oss-process=style/image

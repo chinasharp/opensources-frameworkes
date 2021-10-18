@@ -1,0 +1,149 @@
+server:
+  port: 8081
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  application:
+    name: opensources-user-canal-adapter
+
+canal:
+  log:
+    version: 1.0.0
+    workdir: ../logs
+    level: INFO
+
+# ESSyncConfig scan 扫描包路径
+es.scan.path: org.opensourceframework.canal.adapter.user.boot.config
+
+canal.conf:
+  # 模式 tcp kafka rocketMQ 默认tcp
+  mode: rocketMQ
+  # 对应单机模式下的canal server的ip:port
+  # canalServerHost: 127.0.0.1:11111
+  # 对应集群模式下的zk地址, 如果配置了canalServerHost, 则以canalServerHost为准
+  # zookeeperHosts: slave1:2181
+  # mode是rocketmq时需配置mq的地址和端口
+  mqServers: 127.0.0.1:9876
+  # 是否以json字符串形式投递数据, 仅在kafka/rocketMQ模式下有效
+  flatMessage: true
+  # 批大小
+  batchSize: 500
+  # 同步分批提交大小
+  syncBatchSize: 1000
+  # 重试次数
+  retries: 0
+  # 消费超时时间
+  timeout: 600000
+  # aliyun ak/sk
+  accessKey:
+  secretKey:
+  # 是否启用消息轨迹
+  enableMessageTrace: true
+  # 在使用阿里云商业化mq服务时，如果想使用云上消息轨迹功能，请设置此配置为true
+  # accessChannel:
+  # 用于使用开源RocketMQ时，设置自定义的消息轨迹topic
+  customizedTraceTopic:
+  # 开源RocketMQ命名空间
+  namespace:
+  # 同步的数据源连接配置
+  srcDataSources:
+    # dataSources名称  与map.yml中的dataSourceKey对应
+    # 规定:每一个数据库对应一个不同的数据库配置
+    opensourceframework_order:
+      driver:
+      url: jdbc:mysql://127.0.0.1:3306/opensourceframework_order?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+      username: opensourceframework
+      password: opensourceframework
+      maxActive: 20
+
+    opensourceframework_aliorder:
+      driver:
+      url: jdbc:mysql://127.0.0.1:3306/opensourceframework_aliorder?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+      username: opensourceframework
+      password: opensourceframework
+      maxActive: 20
+
+    opensourceframework_telemarket:
+      driver:
+      url: jdbc:mysql://127.0.0.1:3306/telemarket?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+      username: opensourceframework
+      password: opensourceframework
+      maxActive: 20
+
+  # canal adapters 配置
+  canalAdapters:
+    # tcp模式时canal instance  MQ模式时为TOPIC  与map.yml中的destination对应
+    # 规定:每一个数据库对应一个不同的Topic
+    - instance: CANAL_ORDER_TOPIC
+      # 适配器分组列表
+      groups:
+        # groupId  与map.yml中的groupId对应
+        - groupId: opensourceframework_order
+          # 适配器列表
+          outerAdapters:
+            # logger适配器
+            - name: logger
+              # ES适配器  es
+            - name: es
+              # 适配器唯一键  与map.yml中的outerAdapterKey对应
+              # 规定:key的命名与数据库的库名相同
+              key: opensourceframework_order
+              # 适配器内部的地址, es的server地址
+              hosts: 192.168.2.159:9200,192.168.2.160:9200,192.168.2.161:9200,192.168.2.162:9200,192.168.2.163:9200,192.168.2.164:9200
+              # 其余参数, 可填写适配器中的所需的配置信息
+              properties:
+                # transport or rest
+                mode: rest
+                # rest mode时使用该属性
+                #security.auth: elastic:elastic
+                #cluster.name: elasticsearch-cluster
+
+    - instance: CANAL_ALI_ORDER_TOPIC
+      # 适配器分组列表
+      groups:
+        # groupId  与map.yml中的groupId对应
+        - groupId: opensourceframework_aliorder
+          # 适配器列表
+          outerAdapters:
+            # logger适配器
+            - name: logger
+              # ES适配器  ew
+            - name: es
+              # 适配器唯一键  与map.yml中的outerAdapterKey对应
+              # 规定:key的命名与数据库的库名相同
+              key: opensourceframework_aliorder
+              # 适配器内部的地址, es的server地址
+              hosts: 192.168.2.159:9200,192.168.2.160:9200,192.168.2.161:9200,192.168.2.162:9200,192.168.2.163:9200,192.168.2.164:9200
+              # 其余参数, 可填写适配器中的所需的配置信息
+              properties:
+                # transport or rest
+                mode: rest
+                # rest mode时使用该属性
+                #security.auth: elastic:elastic
+                #cluster.name: elasticsearch-cluster
+
+    - instance: CANAL_TELEMARKET_TOPIC
+      # 适配器分组列表
+      groups:
+        # groupId  与map.yml中的groupId对应
+        - groupId: opensourceframework_telemarket
+          # 适配器列表
+          outerAdapters:
+            # logger适配器
+            - name: logger
+              # ES适配器  ew
+            - name: es
+              # 适配器唯一键  与map.yml中的outerAdapterKey对应
+              # 规定:key的命名与数据库的库名相同
+              key: opensourceframework_telemarket
+              # 适配器内部的地址, es的server地址
+              hosts: 192.168.2.159:9200,192.168.2.160:9200,192.168.2.161:9200,192.168.2.162:9200,192.168.2.163:9200,192.168.2.164:9200
+              # 其余参数, 可填写适配器中的所需的配置信息
+              properties:
+                # transport or rest
+                mode: rest
+                # rest mode时使用该属性
+                #security.auth: elastic:elastic
+                #cluster.name: elasticsearch

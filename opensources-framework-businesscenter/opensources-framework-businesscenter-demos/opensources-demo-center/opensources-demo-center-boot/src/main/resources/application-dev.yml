@@ -1,0 +1,50 @@
+# swagger相关配置
+# 注意：
+#     需手动修改的配置
+#     basePackage属性：需修改为rest包所在的全限定路径（通常只需将xxx替换为中心的英文名即可）
+#     title属性：       将xxx修改为对应中心的中文名即可。（生成的swagger文档的标题）
+#     description属性： 将xxx修改为对应中心的中文名即可。（生成的swagger文档的描述）
+opensourceframework.swagger:
+  enable: true
+  basePackage: org.opensourceframework
+  title: opensourceframework-user-center API
+  description: opensourceframework-user-center API
+  version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: dubborestmetadata
+
+#opensourceframework.redis.registryvo.addresses: 192.168.2.92:7100
+#opensourceframework.redis.registryvo.authPwd: opensourceframework
+#opensourceframework.redis.registryvo.timeout: 60000
+#opensourceframework.redis.registryvo.maxTotal: 300
+#opensourceframework.redis.registryvo.maxIdle: 20
+#opensourceframework.redis.registryvo.maxWaitMillis: 60000
+#opensourceframework.redis.registryvo.database: 0
+
+#opensourceframework.mq.config.registryvo.nameSrvAddr: 127.0.0.1:9876
+#opensourceframework.mq.config.registryvo.accessKey:
+#opensourceframework.mq.config.registryvo.secretKey:
+#opensourceframework.mq.config.registryvo.producerId: PID_OPENSOURCEFRAMEWORK_DEMO
+#opensourceframework.mq.config.registryvo.consumeThreadNums: 5
+# 是否读取数据配置的消息订阅配置 默认true
+#opensourceframework.mq.topic.registryvo.enableDBConfig: false
+
+#mq.demouser.subscribe.registryvo.topic: OPENSOURCEFRAMEWORK_DEMO_TOPIC
+#mq.demouser.subscribe.registryvo.tag: OPENSOURCEFRAMEWORK_DEMO_TAG
+#mq.demouser.subscribe.registryvo.consumer: CID_opensourceframework_DEMO
+
+
+#opensourceframework.mybatis.registryvo.validationQuery: SELECT 1
+#opensourceframework.mybatis.registryvo.driverClassName: com.mysql.jdbc.Driver
+#opensourceframework.mybatis.registryvo.jdbcUrl: jdbc:mysql://127.0.0.1:3306/opensourceframework_demo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+#opensourceframework.mybatis.registryvo.maxWait: 3000
+#opensourceframework.mybatis.registryvo.jdbcUserName: opensourceframework
+#opensourceframework.mybatis.registryvo.jdbcUserPassword: opensourceframework
+#opensourceframework.mybatis.registryvo.maxActive: 10
+#opensourceframework.mybatis.registryvo.initialSize: 5
+#opensourceframework.mybatis.registryvo.minIdle: 0
+

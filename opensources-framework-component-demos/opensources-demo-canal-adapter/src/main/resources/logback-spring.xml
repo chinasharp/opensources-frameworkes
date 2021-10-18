@@ -1,0 +1,75 @@
+<configuration scan="true" scanPeriod=" 5 seconds">
+    <!-- 读取spring 上下文环境信息-->
+    <springProperty scope="context" name="spring.application.name" source="spring.application.name"
+                    defaultValue="-canal-adapter"/>
+    <springProperty scope="context" name="canal.log.version" source="canal.log.version" defaultValue="1.0.0"/>
+    <springProperty scope="context" name="canal.log.workdir" source="canal.log.workdir" defaultValue="../logs"/>
+    <springProperty scope="context" name="canal.log.level" source="canal.log.level" defaultValue="DEBUG"/>
+    <jmxConfigurator/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %date %-5level [v:${canal.log.version}][h:${server.localHost}][m:${spring.application.name}][reqId:%X{req.requestId}][%thread] %logger [L:%line] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CANAL-ROOT" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <Key>adapter</Key>
+            <DefaultValue>adapter</DefaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-adapter" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <File>${canal.log.workdir}/${spring.application.name}/${spring.application.name}.log</File>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!-- rollover daily -->
+                    <fileNamePattern>
+                        ${canal.log.workdir}/${spring.application.name}/${spring.application.name}-%d{yyyy-MM-dd}.%i.log.gz
+                    </fileNamePattern>
+                    <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                        <!-- or whenever the file size reaches 100MB -->
+                        <maxFileSize>512MB</maxFileSize>
+                    </timeBasedFileNamingAndTriggeringPolicy>
+                    <maxHistory>60</maxHistory>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>
+                        %date %-5level [v:${canal.log.version}][h:${canal.server.localHost}][m:${spring.application.name}][reqId:%X{req.requestId}][%thread] %logger{36}[L:%line] -%msg%n
+                    </pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <logger name="RocketmqClient" level="ERROR"/>
+    <logger name="RocketmqRemoting" level="ERROR"/>
+    <logger name="druid.sql.Statement" level="${canal.log.level}"/>
+    <logger name="druid.sql.PreparedStatement" level="${canal.log.level}"/>
+
+    <logger name="org.opensourceframework.canal.adapter.hbase" additivity="false">
+        <level value="${canal.log.level}"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="CANAL-ROOT"/>
+    </logger>
+    <logger name="org.opensourceframework.canal.adapter.es" additivity="false">
+        <level value="${canal.log.level}"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="CANAL-ROOT"/>
+    </logger>
+    <logger name="org.opensourceframework.canal.adapter.rdb" additivity="false">
+        <level value="${canal.log.level}"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="CANAL-ROOT"/>
+    </logger>
+    <logger name="org.opensourceframework.canal.adapter.logger" additivity="false">
+        <level value="${canal.log.level}"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="CANAL-ROOT"/>
+    </logger>
+
+    <root level="${canal.log.level}">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="CANAL-ROOT"/>
+    </root>
+</configuration>

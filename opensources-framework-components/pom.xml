@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.opensourceframework</groupId>
+        <artifactId>opensources-framework</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>opensources-framework-components</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <site>
+            <id>website</id>
+            <url>file:///c:/home/opensourceframework/sites</url>
+        </site>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <modules>
+        <module>opensources-framework-component-dao</module>
+        <module>opensources-framework-component-httpclient</module>
+        <module>opensources-framework-component-idempotent</module>
+        <module>opensources-framework-component-mongodb</module>
+        <module>opensources-framework-component-mq</module>
+        <module>opensources-framework-component-redis</module>
+        <module>opensources-framework-component-seclog</module>
+        <module>opensources-framework-component-es</module>
+        <module>opensources-framework-component-flow</module>
+        <module>opensources-framework-component-kafka</module>
+    </modules>
+</project>

@@ -1,0 +1,17 @@
+opensourceframework.service.version: 1.0.0
+opensourceframework.log.version: 1.0.0
+opensourceframework.env.logger.level: info
+opensourceframework.env.module: opensources-demo-storm
+opensourceframework.log.workdir: ../../logs
+
+# 通过maven的属性来指定
+spring.profiles.active: dev
+
+server:
+  port: 8081
+
+spring:
+  aop:
+    proxy-target-class: true
+  application:
+    name: ${opensourceframework.env.module}

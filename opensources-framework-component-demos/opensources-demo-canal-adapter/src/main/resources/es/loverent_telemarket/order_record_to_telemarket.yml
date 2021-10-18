@@ -1,0 +1,110 @@
+# many to one 多个address对应一个user 跨库聚合demo   many表作为主数据 即address表作为主数据表
+#对应application.yml中 srcDataSources下各datasource名
+dataSourceKey: opensourceframework_telemarket
+#对应application.yml中 outerAdapters下各key名
+outerAdapterKey: opensourceframework_telemarket
+#对应application.yml中 canalAdapters下各instance名
+destination: CANAL_TELEMARKET_TOPIC
+groupId: opensourceframework_telemarket
+esMapping:
+  _index: order_record_to_telemarket
+  # 是否对索引进行删除和新建操作
+  _type: order_record_to_telemarket
+  #  表示该数据行的唯一字段(一般为主数据的主键),跨库聚合时设置为pk
+  pk: telemarketOrderId
+
+  # 跨库聚合时定义该属性
+  crossDB: true
+  # 聚合数据相互关联的字段
+  crossEsFieldName: orderNo
+
+  relationTableIdDBNames: neworder_record#r.id , distribute_log#l.id
+  esUniqueField: orderTelemarkId
+
+  # 有则更新，没有则进行插入
+  upsert: true
+
+  sql: "SELECT o.id as telemarketOrderId ,  r.id as orderTelemarkId , l.id as logId , l.telemarketId, o.orderNo , o.modelName ,
+               o.specName , o.newConfig , o.tenancy ,  l.userId as telUserId ,l.opId, l.opName
+            from order_info o
+        LEFT JOIN neworder_record r ON o.orderNo = r.orderNo
+        LEFT JOIN distribute_log l ON r.telemarketId = l.telemarketId"
+
+  commitBatch: 3000
+  mappings: '{
+             	"order_record_to_telemarket": {
+             	    "dynamic": true,
+             	    "properties":{
+             			 "orderId":{"type": "long"},
+             			 "orderNo": {"type": "keyword"},
+             			 "telemarketOrderId" :{"type": "long"},
+             			 "orderTelemarkId":{"type": "long"},
+             			 "telemarketId":{"type": "keyword"},
+             			 "logId":{"type": "long"},
+             			 "userId": {"type": "long"},
+             			 "telUserId": {"type" : "keyword"},
+             			 "opId": {"type" : "keyword"},
+             			 "extendId": {"type": "long"},
+             			 "channelNo": {"type": "keyword"},
+             			 "logisticsNo": {"type": "keyword"},
+             			 "returnLogisticsNo": {"type": "keyword"},
+             			 "stockFlag": {"type": "short"},
+             			 "snCode": {"type": "keyword"},
+             			 "imei": {"type": "keyword"},
+             			 "applyTime": {"type": "date"},
+             			 "approvalTime": {"type": "date"},
+             			 "applyReCheckTime": {"type": "date"},
+             			 "terminateApplyTime": {"type": "date"},
+             			 "payTime": {"type": "date"},
+             			 "signTime": {"type": "date"},
+             			 "backTime": {"type": "date"},
+             			 "returnTime": {"type": "date"},
+             			 "compensationTime": {"type": "date"},
+             			 "createOn": {"type": "date"},
+             			 "updateOn": {"type": "date"},
+             			 "state": {"type": "short"},
+             			 "creditState": {"type": "short"},
+             			 "agreementUrl": {"type": "keyword"},
+             			 "sealAgreementUrl": {"type": "keyword"},
+             			 "evid": {"type": "keyword"},
+             			 "signServiceId": {"type": "keyword"},
+             			 "discountFee": {"type": "scaled_float","scaling_factor": 1000},
+             			 "productType": {"type": "short"},
+             			 "applyInvoice" : { "type": "short"},
+             			 "invoiceEnd" : { "type": "short"},
+             			 "channelType" : { "type": "keyword"},
+             			 "couponId" : { "type": "keyword"},
+             			 "couponAmount" : { "type": "keyword"},
+             			 "salePayAmount" : {"type": "scaled_float" ,"scaling_factor": 1000},
+             			 "loginName" : { "type": "keyword"},
+             			 "orderType" : { "type": "short"},
+             			 "storeNo" : { "type": "keyword"},
+             			 "bfReceivePhotoUrl" : { "type": "keyword"},
+             			 "receivePhotoUrl" : { "type": "keyword"},
+             			 "rentType" : { "type": "short"},
+             			 "depositSource" : { "type": "short"},
+             			 "repeatOrder" : { "type": "short"},
+             			 "inviteCode" : { "type": "keyword"},
+             			 "zoneCode" : { "type": "keyword"},
+             			 "cooperationMode" : { "type": "short"},
+             			 "remark" : { "type": "keyword"},
+             			 "parentStoreNo" : { "type": "keyword"},
+             			 "transactionId" : { "type": "keyword"},
+             			 "zmOrderNo" : { "type": "keyword"},
+             			 "zmUserId" : { "type": "keyword"},
+             			 "storeType" : { "type": "short"},
+             			 "remissionDeposit" : {"type": "scaled_float" ,"scaling_factor": 1000},
+             			 "orderVersion" : { "type": "integer"},
+             			 "fundId" : { "type": "integer"},
+             			 "merchantId" : { "type": "integer"},
+             			 "deleted" : { "type": "integer"},
+             			 "reletAgreementUrl" : { "type": "keyword"},
+             			 "reletSealAgreementUrl" : { "type": "keyword"},
+             			 "sourceOrder" : { "type": "keyword"},
+             			 "oldUser" : { "type": "short"},
+             			 "step" : { "type": "short"},
+             			 "loanAidType" : { "type": "keyword"},
+             			 "withholdAgreemUrl" : { "type": "keyword"}
+             	    }
+             	}
+             }'

@@ -1,0 +1,25 @@
+# swagger相关配置
+# 注意：
+#     需手动修改的配置
+#     basePackage属性：需修改为rest包所在的全限定路径（通常只需将xxx替换为中心的英文名即可）
+#     title属性：       将xxx修改为对应中心的中文名即可。（生成的swagger文档的标题）
+#     description属性： 将xxx修改为对应中心的中文名即可。（生成的swagger文档的描述）
+swagger.enabled: false
+opensourceframework.swagger:
+    enable: false
+    basePackage: org.opensourceframework
+    title: 缓存组件使用demo
+    description: 缓存组件使用demo
+    version: 1.0.0
+
+opensourceframework.mybatis.registryvo:
+    validationQuery: SELECT 1
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/opensourceframework_demo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    maxWait: 60000
+    jdbcUserName: opensourceframework
+    jdbcUserPassword: opensourceframework
+    maxActive: 10
+    initialSize: 5
+    minIdle: 0
+

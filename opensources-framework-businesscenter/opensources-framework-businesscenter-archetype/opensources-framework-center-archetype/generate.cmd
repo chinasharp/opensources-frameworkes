@@ -1,0 +1,1 @@
+mvn clean install && cd .. && mvn archetype:generate -DarchetypeCatalog=local

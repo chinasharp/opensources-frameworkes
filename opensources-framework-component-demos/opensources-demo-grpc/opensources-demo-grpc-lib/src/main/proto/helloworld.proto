@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "org.opensourceframework.user.grpc.lib";
+
+service HelloWorld {
+    rpc SayHello ( HelloWorldRequest) returns (  HelloWorldReply) {}
+
+}
+message HelloWorldRequest {
+    string name = 1;
+    int32 age = 2;
+}
+message HelloWorldReply {
+    string message = 1;
+    string code = 2;
+    string result = 3;
+}

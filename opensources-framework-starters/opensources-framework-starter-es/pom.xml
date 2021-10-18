@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>opensources-framework-starters</artifactId>
+        <groupId>org.opensourceframework</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>opensources-framework-starter-es</artifactId>
+    <packaging>jar</packaging>
+    <name>opensources-framework-starter-es</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.opensourceframework</groupId>
+            <artifactId>opensources-framework-component-es</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+        </dependency>
+    </dependencies>
+</project>

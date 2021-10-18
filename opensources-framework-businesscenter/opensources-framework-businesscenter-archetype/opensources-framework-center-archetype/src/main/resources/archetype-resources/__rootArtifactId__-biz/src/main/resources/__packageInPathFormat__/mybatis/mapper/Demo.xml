@@ -1,0 +1,32 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    TODO 该类及类中的方法仅做示例，测试及上线阶段请自行删除，请勿在该类中编写真实的业务代码。
+    namespace值为${groupId}.funds.configintegration.biz.dao.org.opensourceframework.user.bloomfilterr.mybatis.mapper.XxxMapper
+-->
+<mapper namespace="${package}.biz.dao.mapper.DemoMapper">
+    <sql id="Base_Column_List">
+    id ,account,name,password,phone,member_card_no,address,application_id,create_person,create_time,
+    create_time_stamp,update_person,update_time,update_time_stamp,dr
+    </sql>
+
+    <select id="findByMapperXml" parameterType="java.lang.Long" resultType="${package}.biz.dao.eo.DemoEo">
+        select
+            <include refid="Base_Column_List" />
+        from demo_user
+        where id = ${symbol_pound}{id}
+    </select>
+
+    <insert id="saveByMyBatisXml" parameterType="${package}.biz.dao.eo.DemoEo">
+        insert into demo_user (
+            <include refid="Base_Column_List" />
+        )
+        values (#{id}, #{account}, #{name}, #{password}, #{phone}, #{memberCardNo},#{address}, #{applicationId},
+        #{createPerson}, #{createTime},#{createTimeStamp},#{updatePerson}, #{updateTime},#{updateTimeStamp},#{dr})
+    </insert>
+
+</mapper>

@@ -1,0 +1,59 @@
+# swagger相关配置
+# 注意：
+#     需手动修改的配置
+#     basePackage属性：需修改为rest包所在的全限定路径（通常只需将xxx替换为中心的英文名即可）
+#     title属性：       将xxx修改为对应中心的中文名即可。（生成的swagger文档的标题）
+#     description属性： 将xxx修改为对应中心的中文名即可。（生成的swagger文档的描述）
+opensourceframework.swagger:
+      enable: true
+      basePackage: org.opensourceframework
+      title: 幂等组件使用demo
+      description: 幂等组件使用demo
+      version: 1.0.0
+
+opensourceframework.mybatis.registryvo.validationQuery: SELECT 1
+opensourceframework.mybatis.registryvo.driverClassName: com.mysql.jdbc.Driver
+opensourceframework.mybatis.registryvo.jdbcUrl: jdbc:mysql://127.0.0.1:3306/opensourceframework_demo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+opensourceframework.mybatis.registryvo.maxWait: 3000
+opensourceframework.mybatis.registryvo.jdbcUserName: opensourceframework
+opensourceframework.mybatis.registryvo.jdbcUserPassword: opensourceframework
+opensourceframework.mybatis.registryvo.maxActive: 10
+opensourceframework.mybatis.registryvo.initialSize: 5
+opensourceframework.mybatis.registryvo.minIdle: 0
+
+
+# MQ连接配置
+opensourceframework.mq.config.registryvo.nameSrvAddr: 127.0.0.1:9876
+opensourceframework.mq.config.registryvo.accessKey:
+opensourceframework.mq.config.registryvo.secretKey:
+opensourceframework.mq.config.registryvo.producerId: PID_OPENSOURCEFRAMEWORK_DEMO
+opensourceframework.mq.config.registryvo.consumeThreadNums: 5
+# 是否读取数据配置的消息订阅配置 默认true
+opensourceframework.mq.topic.config.registryvo.enableDBConfig: false
+
+#Demo
+mq.demouser.subscribe.registryvo:
+      topic: DEMO_USER_TOPIC
+      tag: DEMO_USER_TAG
+      consumer: GID_DEMO_USER_CONSUMER
+
+#RestClent 连接配置
+# 连接池的最大连接数默认为50
+opensourceframework.http.client.config.maxTotal: 50
+# 分配给同一个route(路由)最大的并发连接数 默认100
+opensourceframework.http.client.config.maxPerRoute: 100
+# 读取数据超时(等待响应超时) 默认30秒
+opensourceframework.http.client.config.readTimeout: 5000
+# 客服端发送请求到与目标url建立起连接的最大时间 默认8秒
+opensourceframework.http.client.config.connectTimeout: 4000
+# 从连接池中获取可用连接超时时间 默认5秒
+opensourceframework.http.client.config.conReqTimeOut: 5000
+
+
+#Redis 连接配置
+opensourceframework.redis.registryvo.addresses: 127.0.0.1:6379
+opensourceframework.redis.registryvo.livetime: 86370
+opensourceframework.redis.registryvo.authPwd: opensourceframework
+opensourceframework.redis.registryvo.maxIdle: 300
+opensourceframework.redis.registryvo.maxTotal: 500
+opensourceframework.redis.registryvo.workModel: single

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.opensourceframework.starter.encdec.JasyptSpringBootAutoConfiguration
+org.springframework.cloud.bootstrap.BootstrapConfiguration=org.opensourceframework.starter.encdec.JasyptSpringCloudBootstrapConfiguration
+org.springframework.context.ApplicationListener=org.opensourceframework.starter.encdec.configuration.EnableEncryptablePropertiesBeanFactoryPostProcessor

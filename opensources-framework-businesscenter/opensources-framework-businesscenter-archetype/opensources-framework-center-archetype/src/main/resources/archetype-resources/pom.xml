@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.opensourceframework</groupId>
+        <artifactId>opensources-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>${artifactId}</artifactId>
+    <groupId>${groupId}</groupId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <!-- 发布环境切换配置 -->
+    <profiles>
+        <!-- 开发 默认激活 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+                <version.suffix>-SNAPSHOTS</version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev2</id>
+            <properties>
+                <env>dev2</env>
+                <version.suffix>-SNAPSHOTS</version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 测试服务器 -->
+        <profile>
+            <id>fat</id>
+            <properties>
+                <env>fat</env>
+                <version.suffix>-RELEASES</version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>fat2</id>
+            <properties>
+                <env>fat2</env>
+                <version.suffix>-RELEASES</version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>fat3</id>
+            <properties>
+                <env>fat3</env>
+                <version.suffix>-RELEASES</version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 预发布服务器 -->
+        <profile>
+            <id>uat</id>
+            <properties>
+                <env>uat</env>
+                <version.suffix></version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 预发布服务器2 -->
+        <profile>
+            <id>uat2</id>
+            <properties>
+                <env>uat2</env>
+                <version.suffix></version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>uat3</id>
+            <properties>
+                <env>uat3</env>
+                <version.suffix></version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>192.168.2.92:11800,192.168.2.98:11800,192.168.2.131:11800</sky_walking_server_addr>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 生产服务器 -->
+        <profile>
+            <id>pro</id>
+            <properties>
+                <env>pro</env>
+                <version.suffix></version.suffix>
+                <sky_walking_jar>/usr/local/lib/agent</sky_walking_jar>
+                <sky_walking_app_name>${project.artifactId}_${env}</sky_walking_app_name>
+                <sky_walking_server_addr>172.19.100.4:11800,172.19.100.5:11800,172.19.100.6:11800</sky_walking_server_addr>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <!-- 修改多项目版本的插件,一定要有  -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>

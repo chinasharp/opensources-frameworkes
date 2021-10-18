@@ -1,0 +1,16 @@
+#日志目录
+opensourceframework.log.workdir: ../../logs
+opensourceframework.env.logger.level:
+opensourceframework.env.module:
+
+server.port: 8081
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: opensources-demo-es
+  aop:
+    proxy-target-class: true
+  main:
+    allow-bean-definition-overriding: true

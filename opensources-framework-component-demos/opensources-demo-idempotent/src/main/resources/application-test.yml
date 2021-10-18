@@ -1,0 +1,14 @@
+
+# swagger相关配置
+# 注意：
+#     需手动修改的配置
+#     basePackage属性：需修改为rest包所在的全限定路径（通常只需将xxx替换为中心的英文名即可）
+#     title属性：       将xxx修改为对应中心的中文名即可。（生成的swagger文档的标题）
+#     description属性： 将xxx修改为对应中心的中文名即可。（生成的swagger文档的描述）
+opensourceframework.swagger:
+      enable: true
+      basePackage: org.opensourceframework
+      title: 幂等组件使用demo
+      description: 幂等组件使用demo
+      version: 1.0.0
+      

@@ -1,0 +1,18 @@
+# swagger相关配置
+# 注意：
+#     需手动修改的配置
+#     basePackage属性：需修改为rest包所在的全限定路径（通常只需将xxx替换为中心的英文名即可）
+#     title属性：       将xxx修改为对应中心的中文名即可。（生成的swagger文档的标题）
+#     description属性： 将xxx修改为对应中心的中文名即可。（生成的swagger文档的描述）
+swagger.enabled: true
+opensourceframework.swagger:
+  basePackage: org.opensourceframework
+  title: opensources-user-center API
+  description: opensources-user-center API
+  version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: dubborestmetadata

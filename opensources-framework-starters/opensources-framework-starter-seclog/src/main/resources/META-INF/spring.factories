@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.opensourceframework.starter.seclog.SecLogAutoConfiguration,\
+org.opensourceframework.starter.seclog.SecLogMqAutoConfiguration
