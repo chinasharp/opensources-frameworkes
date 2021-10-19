@@ -39,7 +39,7 @@ Nacos配置说明
     -Dnacos.server.username=codeuser
     -Dnacos.server.password=codeuser3321
     -Dnacos.server.namespace=233bc25b-3177-4f78-86e7-2cc90f8bde26
-    -Dnacos.server.address=aznacosof.woaizuji.com:80
+    -Dnacos.server.address=127.0.0.1:8848
     -Dnacos.server.dataIds=common.properties,opensources-demo-application.properties
     
     说明:opensources-demo-application.properties为本应用配置,若需公共配置,比如mongoDB连接 、MQ连接 、Redis连接等

@@ -1,6 +1,6 @@
 package org.opensourceframework.gateway.demo.boot.cofig;
 
-import org.opensourceframework.gateway.demo.boot.custom.TimerFilter;
+import org.opensourceframework.gateway.demo.boot.filter.TimerFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -23,10 +23,10 @@ public class GateWayConfig {
 	public RouteLocator routeLocator(RouteLocatorBuilder builder){
 		return builder.routes()
 				/** rout id 和 yml文件中 id相同可正常注入 **/
-				.route(predicate -> predicate.path("/java-opensources-user-application/**")
+				.route(predicate -> predicate.path("/opensources-demo-application/**")
 						.filters(filter -> filter.stripPrefix(1))
-						.uri("lb://opensources-user-application")
-						.id("opensources-user-application"))
+						.uri("lb://opensources-demo-application")
+						.id("opensources-demo-application"))
 				.route(predicate -> predicate.path("/java-opensources-user-application/**")
 						// 指定时间之后生效
 						//.and().after()

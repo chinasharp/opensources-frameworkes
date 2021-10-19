@@ -8,7 +8,7 @@
     -Dopensourceframework.env.module=opensourceframework-demo-center
     -Dnacos.server.username=codeuser
     -Dnacos.server.password=codeuser3321
-    -Dnacos.server.address=aznacosof.woaizuji.com:80
+    -Dnacos.server.address=127.0.0.1:8848
     -Dnacos.server.namespace=233bc25b-3177-4f78-86e7-2cc90f8bde26
     -Dnacos.config.dataIds=opensourceframework-common.properties,opensourceframework-demo-center.properties
 
@@ -27,7 +27,7 @@
     java -server -Xms2g -Xmx2g -Xmn1g -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof
     -Dopensourceframework.server.port=8082 -Dopensourceframework.profiles.active=dev -Dopensourceframework.log.version=1.0.0 -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs \
     -Dopensourceframework.env.logger.level=info -Dopensourceframework.env.module=opensources-demo-center -Dnacos.service.namespace=c99551cc-3877-48cb-8d80-e3261c4443d6 \
-    -Dnacos.service.address=10.53.157.115:8848 -Dnacos.service.version=1.0.0 -Dnacos.service.dataIds=opensources-demo-center.properties,opensources-framework-bases.properties  \
+    -Dnacos.service.address=127.0.0.1:8848 -Dnacos.service.version=1.0.0 -Dnacos.service.dataIds=opensources-demo-center.properties,opensources-framework-bases.properties  \
     -jar opensources-demo-center-boot.jar
 
 ## 工程总体结构说明

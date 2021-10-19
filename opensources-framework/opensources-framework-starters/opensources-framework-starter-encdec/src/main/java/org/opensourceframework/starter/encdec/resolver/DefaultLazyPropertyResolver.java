@@ -10,7 +10,7 @@ import org.springframework.beans.factory.BeanFactory;
 import java.util.Optional;
 
 /**
- * Default Resolver bean that delegates to a custom defined {@link EncryptablePropertyResolver} or creates a new {@link DefaultPropertyResolver}
+ * Default Resolver bean that delegates to a filter defined {@link EncryptablePropertyResolver} or creates a new {@link DefaultPropertyResolver}
  *
  * @author Ulises Bocchio
  */
@@ -29,7 +29,7 @@ public class DefaultLazyPropertyResolver implements EncryptablePropertyResolver 
                             return bean;
                         })
                         .orElseGet(() -> {
-                            log.info("Property Resolver custom Bean not found with name '{}'. Initializing Default Property Resolver", customResolverBeanName);
+                            log.info("Property Resolver filter Bean not found with name '{}'. Initializing Default Property Resolver", customResolverBeanName);
                             return new DefaultPropertyResolver(encryptor, propertyDetector);
                         }));
     }

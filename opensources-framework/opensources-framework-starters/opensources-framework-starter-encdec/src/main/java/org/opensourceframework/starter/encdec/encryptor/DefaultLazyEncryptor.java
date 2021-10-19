@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
 import java.util.Optional;
 
 /**
- * Default Lazy Encryptor that delegates to a custom {@link StringEncryptor} bean or creates a default {@link PooledPBEStringEncryptor}
+ * Default Lazy Encryptor that delegates to a filter {@link StringEncryptor} bean or creates a default {@link PooledPBEStringEncryptor}
  *
  * @author Ulises Bocchio
  */
@@ -30,7 +30,7 @@ public class DefaultLazyEncryptor implements StringEncryptor {
                             return bean;
                         })
                         .orElseGet(() -> {
-                            log.info("String Encryptor custom Bean not found with name '{}'. Initializing Default String Encryptor", customEncryptorBeanName);
+                            log.info("String Encryptor filter Bean not found with name '{}'. Initializing Default String Encryptor", customEncryptorBeanName);
                             return createDefault(e);
                         }));
     }

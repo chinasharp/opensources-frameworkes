@@ -8,7 +8,7 @@ import org.springframework.beans.factory.BeanFactory;
 import java.util.Optional;
 
 /**
- * Default Lazy property detector that delegates to a custom {@link EncryptablePropertyDetector} bean or initializes a
+ * Default Lazy property detector that delegates to a filter {@link EncryptablePropertyDetector} bean or initializes a
  * default {@link DefaultPropertyDetector}.
  *
  * @author Ulises Bocchio
@@ -28,7 +28,7 @@ public class DefaultLazyPropertyDetector implements EncryptablePropertyDetector 
                             return bean;
                         })
                         .orElseGet(() -> {
-                            log.info("Property Detector custom Bean not found with name '{}'. Initializing Default Property Detector", customDetectorBeanName);
+                            log.info("Property Detector filter Bean not found with name '{}'. Initializing Default Property Detector", customDetectorBeanName);
                             return new DefaultPropertyDetector(prefix, suffix);
                         }));
     }

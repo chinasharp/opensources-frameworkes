@@ -1,4 +1,4 @@
-package org.opensourceframework.gateway.demo.boot.custom;
+package org.opensourceframework.gateway.demo.boot.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;

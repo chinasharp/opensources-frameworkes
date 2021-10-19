@@ -108,25 +108,25 @@ public class JasyptEncryptorConfigurationProperties {
     public static class PropertyConfigurationProperties {
 
         /**
-         * Specify the name of the bean to be provided for a custom {@link EncryptablePropertyDetector}.
+         * Specify the name of the bean to be provided for a filter {@link EncryptablePropertyDetector}.
          * Default value is {@code "encryptablePropertyDetector"}
          */
         private String detectorBean = "encryptablePropertyDetector";
 
         /**
-         * Specify the name of the bean to be provided for a custom {@link EncryptablePropertyResolver}.
+         * Specify the name of the bean to be provided for a filter {@link EncryptablePropertyResolver}.
          * Default value is {@code "encryptablePropertyResolver"}
          */
         private String resolverBean = "encryptablePropertyResolver";
 
         /**
-         * Specify a custom {@link String} to identify as prefix of encrypted properties.
+         * Specify a filter {@link String} to identify as prefix of encrypted properties.
          * Default value is {@code "ENC("}
          */
         private String prefix = "ENC(";
 
         /**
-         * Specify a custom {@link String} to identify as suffix of encrypted properties.
+         * Specify a filter {@link String} to identify as suffix of encrypted properties.
          * Default value is {@code ")"}
          */
         private String suffix = ")";

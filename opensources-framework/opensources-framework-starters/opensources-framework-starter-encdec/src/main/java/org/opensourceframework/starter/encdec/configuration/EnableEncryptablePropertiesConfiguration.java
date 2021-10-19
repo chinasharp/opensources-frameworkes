@@ -20,7 +20,7 @@ import org.springframework.core.env.PropertySource;
  * with {@link EncryptablePropertySourceWrapper} and defines a default {@link StringEncryptor} for decrypting properties
  * that can be configured through the same properties it wraps.</p>
  * <p>The {@link StringEncryptor} bean is only defined when no other
- * bean of type {@link StringEncryptor} is present in the Application Context, thus allowing for custom definition if required.</p>
+ * bean of type {@link StringEncryptor} is present in the Application Context, thus allowing for filter definition if required.</p>
  * <p>The default {@link StringEncryptor} can be configured through the following properties: </p>
  * <table border="1">
  *     <tr>
