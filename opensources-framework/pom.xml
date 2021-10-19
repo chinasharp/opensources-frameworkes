@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>opensources-frameworkes</artifactId>
+        <groupId>org.opensourceframework</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>opensources-framework</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>opensources-framework-dependencies</module>
+        <module>opensources-framework-bases</module>
+        <module>opensources-framework-commons</module>
+        <module>opensources-framework-components</module>
+        <module>opensources-framework-starters</module>
+        <module>opensources-framework-component-demos</module>
+    </modules>
+    <properties>
+        <modules.version>1.0.0-SNAPSHOT</modules.version>
+        <!-- jdk、编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- jdk、编码 -->
+
+        <!-- maven-plugin start -->
+        <maven-war-plugin.version>3.1.0</maven-war-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven.plugin.spring-boot.version>2.1.8.RELEASE</maven.plugin.spring-boot.version>
+        <maven.plugin.resources.version>3.1.0</maven.plugin.resources.version>
+        <maven.plugin.source.version>3.2.0</maven.plugin.source.version>
+        <maven.plugin.compiler.version>3.8.1</maven.plugin.compiler.version>
+        <maven.plugin.deploy.version>2.8.2</maven.plugin.deploy.version>
+        <gmavenplus.version>1.5</gmavenplus.version>
+        <maven.plugin.surefire.version>2.21.0</maven.plugin.surefire.version>
+        <maven.plugin.site.version>3.8.2</maven.plugin.site.version>
+        <maven.plugin.javadoc.version>3.1.1</maven.plugin.javadoc.version>
+        <!-- maven-plugin end -->
+
+        <!-- opensources base  opensources-dependencies opensources-common opensources-framework  -->
+        <opensourceframework.dependencies.version>${modules.version}</opensourceframework.dependencies.version>
+        <opensourceframework.base.version>${modules.version}</opensourceframework.base.version>
+        <opensourceframework.commons.version>${modules.version}</opensourceframework.commons.version>
+
+        <!-- opensources-framework-components -->
+        <opensourceframework.component.dao.version>${modules.version}</opensourceframework.component.dao.version>
+        <opensourceframework.component.redis.version>${modules.version}</opensourceframework.component.redis.version>
+        <opensourceframework.component.mq.version>${modules.version}</opensourceframework.component.mq.version>
+        <opensourceframework.component.kafka.version>${modules.version}</opensourceframework.component.kafka.version>
+        <opensourceframework.component.mongodb.version>${modules.version}</opensourceframework.component.mongodb.version>
+        <opensourceframework.component.httpclient.version>${modules.version}</opensourceframework.component.httpclient.version>
+        <opensourceframework.component.seclog.version>${modules.version}</opensourceframework.component.seclog.version>
+        <opensourceframework.component.idempotent.version>${modules.version}</opensourceframework.component.idempotent.version>
+        <opensourceframework.component.es.version>${modules.version}</opensourceframework.component.es.version>
+        <opensourceframework.component.flow.version>${modules.version}</opensourceframework.component.flow.version>
+
+        <!-- opensources-framework-starter- -->
+        <opensourceframework.starter.es.version>${modules.version}</opensourceframework.starter.es.version>
+        <opensourceframework.starter.callback.version>${modules.version}</opensourceframework.starter.callback.version>
+        <opensourceframework.starter.fastdfs.version>${modules.version}</opensourceframework.starter.fastdfs.version>
+        <opensourceframework.starter.mongodb.version>${modules.version}</opensourceframework.starter.mongodb.version>
+        <opensourceframework.starter.mq.version>${modules.version}</opensourceframework.starter.mq.version>
+        <opensourceframework.starter.kafka.version>${modules.version}</opensourceframework.starter.kafka.version>
+        <opensourceframework.starter.mybatis.version>${modules.version}</opensourceframework.starter.mybatis.version>
+        <opensourceframework.starter.redis.version>${modules.version}</opensourceframework.starter.redis.version>
+        <opensourceframework.starter.ehcache.version>${modules.version}</opensourceframework.starter.ehcache.version>
+        <opensourceframework.starter.mixcache.version>${modules.version}</opensourceframework.starter.mixcache.version>
+        <opensourceframework.starter.restclient.version>${modules.version}</opensourceframework.starter.restclient.version>
+        <opensourceframework.starter.seclog.version>${modules.version}</opensourceframework.starter.seclog.version>
+        <opensourceframework.starter.soapclient.version>${modules.version}</opensourceframework.starter.soapclient.version>
+        <opensourceframework.starter.springcloud-nacos.version>${modules.version}</opensourceframework.starter.springcloud-nacos.version>
+        <opensourceframework.starter.swagger.version>${modules.version}</opensourceframework.starter.swagger.version>
+        <opensourceframework.starter.encdec.version>${modules.version}</opensourceframework.starter.encdec.version>
+        <opensourceframework.starter.oss.version>${modules.version}</opensourceframework.starter.oss.version>
+
+        <junit.version>4.13</junit.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- opensources-dependencies  -->
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-dependencies</artifactId>
+                <version>${opensourceframework.dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-bases</artifactId>
+                <version>${opensourceframework.base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-commons</artifactId>
+                <version>${opensourceframework.commons.version}</version>
+            </dependency>
+            <!-- opensources-framework-bases end -->
+
+            <!-- opensources-framework-components start -->
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-dao</artifactId>
+                <version>${opensourceframework.component.dao.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-redis</artifactId>
+                <version>${opensourceframework.component.redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-mq</artifactId>
+                <version>${opensourceframework.component.mq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-kafka</artifactId>
+                <version>${opensourceframework.component.kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-mongodb</artifactId>
+                <version>${opensourceframework.component.mongodb.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-httpclient</artifactId>
+                <version>${opensourceframework.component.httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-seclog</artifactId>
+                <version>${opensourceframework.component.seclog.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-idempotent</artifactId>
+                <version>${opensourceframework.component.idempotent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-es</artifactId>
+                <version>${opensourceframework.component.es.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-component-flow</artifactId>
+                <version>${opensourceframework.component.flow.version}</version>
+            </dependency>
+            <!-- opensources-framework-components end -->
+
+            <!-- opensources-framework-starters start -->
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-es</artifactId>
+                <version>${opensourceframework.starter.es.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-exception-callback</artifactId>
+                <version>${opensourceframework.starter.callback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-fastdfs</artifactId>
+                <version>${opensourceframework.starter.fastdfs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-mongodb</artifactId>
+                <version>${opensourceframework.starter.mongodb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-mq</artifactId>
+                <version>${opensourceframework.starter.mq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-kafka</artifactId>
+                <version>${opensourceframework.starter.kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-mybatis</artifactId>
+                <version>${opensourceframework.starter.mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-redis</artifactId>
+                <version>${opensourceframework.starter.redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-ehcache</artifactId>
+                <version>${opensourceframework.starter.ehcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-mixcache</artifactId>
+                <version>${opensourceframework.starter.mixcache.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-restclient</artifactId>
+                <version>${opensourceframework.starter.restclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-seclog</artifactId>
+                <version>${opensourceframework.starter.seclog.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-soapclient</artifactId>
+                <version>${opensourceframework.starter.soapclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-springcloud-nacos</artifactId>
+                <version>${opensourceframework.starter.springcloud-nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-swagger</artifactId>
+                <version>${opensourceframework.starter.swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-encdec</artifactId>
+                <version>${opensourceframework.starter.encdec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opensourceframework</groupId>
+                <artifactId>opensources-framework-starter-oss</artifactId>
+                <version>${opensourceframework.starter.oss.version}</version>
+            </dependency>
+            <!-- opensources-framework-starters end -->
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${maven.plugin.spring-boot.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven.plugin.resources.version}</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven.plugin.source.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.plugin.compiler.version}</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.plugin.deploy.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.gmavenplus</groupId>
+                    <artifactId>gmavenplus-plugin</artifactId>
+                    <version>${gmavenplus.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- execute the unit tests during the biz phase of the build lifecycle -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.plugin.surefire.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*Spec.**</include>
+                        </includes>
+                        <!-- ignore a failure during testing -->
+                        <testFailureIgnore>true</testFailureIgnore>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven.plugin.site.version}</version>
+                    <configuration>
+                        <locales>zh_CN</locales>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.plugin.javadoc.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <encoding>UTF-8</encoding>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
