@@ -50,6 +50,7 @@ dubbo:
       name: dubbo
       port: -1
       threads: 250
+      host:
   registry:
     # 挂载到 Spring Cloud 注册中心
     address: spring-cloud://localhost
