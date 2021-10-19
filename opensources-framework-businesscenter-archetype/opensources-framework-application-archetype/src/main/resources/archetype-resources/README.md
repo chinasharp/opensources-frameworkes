@@ -34,7 +34,7 @@ Nacos配置说明
     1.IDE启动,VM options设置参数:
     -Dopensourceframework.server.port=8082
     -Dspring.profiles.active=dev
-    -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs
+    -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs
     -Dopensourceframework.env.logger.level=info
     -Dnacos.server.username=codeuser
     -Dnacos.server.password=codeuser3321
@@ -55,8 +55,8 @@ Nacos配置说明
     -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof   \
     -Dopensourceframework.server.port=8082  \ 
     -Dopensourceframework.profiles.active=dev  \
-    -Dopensourceframework.log.version=1.0.0-SNAPSHOT    \
-    -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs \
+    -Dopensourceframework.env.logger.version=1.0.0    \
+    -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs \
     -Dopensourceframework.env.logger.level=info   \
     -Dopensourceframework.env.module=${rootArtifactId}   \
     -Dopensourceframework.service.namespace=c99551cc-3877-48cb-8d80-e3261c4443d6 \

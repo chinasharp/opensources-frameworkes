@@ -16,11 +16,6 @@
     <dependencies>
         <dependency>
             <groupId>org.opensourceframework</groupId>
-            <artifactId>opensources-demo-center-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.opensourceframework</groupId>
             <artifactId>opensources-framework-bases</artifactId>
         </dependency>
         <dependency>

@@ -51,7 +51,7 @@ public class DubboAutoConfiguration {
 
     @Bean
     public File file(){
-        String dirPath = System.getProperty("opensourceframework.log.workdir");
+        String dirPath = System.getProperty("opensourceframework.env.logger.workdir");
         if(StringUtils.isBlank(dirPath)){
             dirPath = getClass().getClassLoader().getResource("").getPath();
         }

@@ -1,13 +1,11 @@
 #日志目录
-opensourceframework.log.workdir: ../../logs
-opensourceframework.env.logger.level:
-opensourceframework.env.module:
+#opensourceframework.env.logger.workdir: ${opensourceframework.env.logger.workdir}
+#opensourceframework.env.logger.level:
+#opensourceframework.env.module:
 
-nacos.services.group: ${opensourceframework.services.group}
-nacos.configs.group: ${opensourceframework.env.module}
-
-dubbo.service.group: ${opensourceframework.env.module}
-dubbo.service.version: 1.0.0
+opensourceframework.configs.group: ${opensourceframework.env.module}
+opensourceframework.services.group: ${opensourceframework.env.module}
+opensourceframework.services.version: 1.0.0
 
 server.port: ${opensourceframework.server.port}
 
@@ -24,20 +22,20 @@ spring:
   #服务注册中心与配置中心配置
   cloud:
     nacos:
-      username: ${nacos.server.username}
-      password: ${nacos.server.password}
+      username: ${opensourceframework.service.server.username}
+      password: ${opensourceframework.service.server.password}
       discovery:
         enabled: true
         register-enabled: true
-        server-addr: ${nacos.server.address}
-        group: ${nacos.services.group}
-        namespace: ${nacos.server.namespace}
+        server-addr: ${opensourceframework.service.server.address}
+        group: ${opensourceframework.services.group}
+        namespace: ${opensourceframework.service.server.namespace}
       config:
-        server-addr: ${nacos.server.address}
-        group: ${nacos.configs.group}
-        namespace: ${nacos.server.namespace}
-        shared-data-ids: ${nacos.config.dataIds}
-        refreshable-dataids: ${nacos.config.dataIds}
+        server-addr: ${opensourceframework.service.server.address}
+        group: ${opensourceframework.configs.group}
+        namespace: ${opensourceframework.service.server.namespace}
+        shared-data-ids: ${opensourceframework.config.dataIds}
+        refreshable-dataids: ${opensourceframework.config.dataIds}
 
 feign:
   hystrix:

@@ -1,4 +1,4 @@
-opensourceframework.log.version: 1.0.0-SNAPSHOT
+opensourceframework.env.logger.version: 1.0.0-SNAPSHOT
 opensourceframework.env.logger.level: INFO
 opensourceframework.env.module: opensources-demo-netty-rpc-provider
 opensourceframework.profiles.active: dev

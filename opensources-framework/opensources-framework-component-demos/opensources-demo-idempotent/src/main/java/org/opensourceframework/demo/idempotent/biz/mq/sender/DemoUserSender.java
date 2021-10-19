@@ -1,11 +1,11 @@
 package org.opensourceframework.demo.idempotent.biz.mq.sender;
 
 import com.alibaba.fastjson.JSON;
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
 import org.opensourceframework.base.rest.MessageResponse;
 import org.opensourceframework.base.vo.MessageVo;
-import org.opensourceframework.demo.idempotent.biz.mq.registryvo.DemoUserRegistryVo;
 import org.opensourceframework.component.mq.api.IMessageSender;
+import org.opensourceframework.demo.idempotent.biz.mq.registryvo.DemoUserRegistryVo;
+import org.opensourceframework.demo.idempotent.dto.request.user.DemoUserReqDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

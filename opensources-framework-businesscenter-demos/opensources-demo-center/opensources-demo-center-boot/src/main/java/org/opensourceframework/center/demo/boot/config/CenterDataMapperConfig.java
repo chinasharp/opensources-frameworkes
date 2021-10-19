@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
-@MapperScan(basePackages = {"org.opensourceframework.center.user.biz.dao.mapper"} )
+@MapperScan(basePackages = {"org.opensourceframework.center.demo.biz.dao.mapper"} )
 public class CenterDataMapperConfig {
 }

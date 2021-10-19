@@ -1,7 +1,7 @@
 #日志目录
-opensourceframework.log.workdir: ../../logs
+opensourceframework.env.logger.workdir: ../../logs
 opensourceframework.env.logger.level:
-opensourceframework.env.module:
+opensourceframework.env.logger.version:
 
 nacos.services.group: ${opensourceframework.services.group}
 nacos.configs.group: ${opensourceframework.env.module}

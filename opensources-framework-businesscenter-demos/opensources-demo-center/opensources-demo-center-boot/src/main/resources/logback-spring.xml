@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 读取spring 上下文环境信息-->
-    <springProperty scope="context" name="spring.application.name" source="spring.application.name" defaultValue="localhost"/>
-    <springProperty scope="context" name="opensourceframework.log.version" source="nacos.service.version" defaultValue="1.0.0"/>
-    <springProperty scope="context" name="opensourceframework.log.workdir" source="opensourceframework.log.workdir" defaultValue="."/>
+    <springProperty scope="context" name="spring.application.name" source="opensourceframework.env.module"/>
+    <springProperty scope="context" name="opensourceframework.env.logger.version" source="opensourceframework.env.logger.version" defaultValue="1.0.0"/>
+    <springProperty scope="context" name="opensourceframework.env.logger.workdir" source="opensourceframework.env.logger.workdir" defaultValue="."/>
     <springProperty scope="context" name="opensourceframework.env.logger.level" source="opensourceframework.env.logger.level" defaultValue="debug"/>
 
     <!-- console日志 -->
@@ -18,11 +18,11 @@
 
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>
-            ${opensourceframework.server.logWorkDir}/${spring.application.name}/${spring.application.name}.log
+            ${opensourceframework.env.logger.workdir}/${spring.application.name}/${spring.application.name}.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>
-                ${opensourceframework.server.logWorkDir}/${spring.application.name}/${spring.application.name}-%d{yyyy-MM-dd}.%i.log.gz
+                ${opensourceframework.env.logger.workdir}/${spring.application.name}/${spring.application.name}-%d{yyyy-MM-dd}.%i.log.gz
             </fileNamePattern>
             <maxFileSize>500MB</maxFileSize><!-- 单日志文件大小 -->
             <maxHistory>30</maxHistory> <!-- 保留30天日志 -->
@@ -30,7 +30,7 @@
         </rollingPolicy>
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
-            <pattern>%date %-5level [v:${opensourceframework.log.version}] [h:${opensourceframework.server.localHost}] [m:${spring.application.name}] [reqId:%X{tid}] [%thread] %logger{36} [L:%line] - %msg%n
+            <pattern>%date %-5level [h:${opensourceframework.server.localHost}] [m:${spring.application.name}] [reqId:%X{tid}] [%thread] %logger{36} [L:%line] - %msg%n
             </pattern>
             </layout>
         </encoder>

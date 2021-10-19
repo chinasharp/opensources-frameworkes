@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 读取spring 上下文环境信息-->
-    <springProperty scope="context" name="spring.application.name" source="spring.application.name" defaultValue="localhost"/>
-    <springProperty scope="context" name="opensourceframework.log.version" source="opensourceframework.log.version" defaultValue="1.0"/>
-    <springProperty scope="context" name="opensourceframework.log.workdir" source="opensourceframework.log.workdir" defaultValue="."/>
+    <springProperty scope="context" name="spring.application.name" source="spring.application.name" defaultValue=""/>
+    <springProperty scope="context" name="opensourceframework.env.logger.version" source="opensourceframework.service.version" defaultValue="1.0.0"/>
+    <springProperty scope="context" name="opensourceframework.env.logger.workdir" source="opensourceframework.env.logger.workdir" defaultValue="."/>
     <springProperty scope="context" name="opensourceframework.env.logger.level" source="opensourceframework.env.logger.level" defaultValue="INFO"/>
 
     <!-- console日志 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date %-5level [v:${opensourceframework.log.version}] [h:${server.localHost}] [m:${spring.application.name}] [reqId:%X{req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n
+            <pattern>%date %-5level [v:${opensourceframework.env.logger.version}] [h:${server.localHost}] [m:${spring.application.name}] [reqId:%X{req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n
             </pattern>
         </encoder>
     </appender>
@@ -27,7 +27,7 @@
             <totalSizeCap>20GB</totalSizeCap> <!-- 日志总量大小，超过该值旧的日志文件将被清理-->
         </rollingPolicy>
         <encoder>
-            <pattern>%date %-5level [v:${opensourceframework.log.version}] [h:${opensourceframework.server.localHost}] [m:${spring.application.name}] [reqId:%X{req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n
+            <pattern>%date %-5level [v:${opensourceframework.env.logger.version}] [h:${opensourceframework.server.localHost}] [m:${spring.application.name}] [reqId:%X{req.requestId}] [%thread] %logger{36} [L:%line] - %msg%n
             </pattern>
         </encoder>
     </appender>

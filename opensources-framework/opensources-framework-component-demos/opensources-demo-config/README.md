@@ -66,7 +66,7 @@ opensourceframework新框架接入surk步骤：
         -Dserver.host.ip=127.0.0.1(改为本机ip)
         -Dopensourceframework.server.port=8081
         -Dspring.profiles.active=dev
-        -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs
+        -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs
         -Dopensourceframework.env.logger.level=info
         -Dopensourceframework.env.module=opensources-demo-center
         -Dopensourceframework.service.namespace=d39820ca-674f-403e-98ea-08ed10e8ef98

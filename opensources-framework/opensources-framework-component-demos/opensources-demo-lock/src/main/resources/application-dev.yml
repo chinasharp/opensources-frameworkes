@@ -1,4 +1,4 @@
-opensourceframework.log.workdir: ../../logs
+opensourceframework.env.logger.workdir: ../../logs
 
 # swagger相关配置
 # 注意：

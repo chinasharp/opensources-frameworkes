@@ -3,7 +3,7 @@
     1 IDE启动,VM options设置参数:
     -Dopensourceframework.server.port=8081
     -Dopensourceframework.profiles.active=dev
-    -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs
+    -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs
     -Dopensourceframework.env.logger.level=info
     -Dnacos.server.username=codeuser
     -Dnacos.server.password=codeuser3321
@@ -13,7 +13,7 @@
 
     说明: nacos.server.namespace: nacos服务器namespace值
          nacos.server.address:nacos服务器ip:port
-         opensourceframework.log.workdir 值修改为日志存放目录
+         opensourceframework.env.logger.workdir 值修改为日志存放目录
          
 
     2 命令行启动:参数说明
@@ -25,7 +25,7 @@
     -XX:HeapDumpPath=/tmp/heapdump.hprof 指定导出堆信息时的路径或文件名
     具体命令:
     java -server -Xms2g -Xmx2g -Xmn1g -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof
-    -Dopensourceframework.server.port=8082 -Dopensourceframework.profiles.active=dev -Dopensourceframework.log.version=1.0.0 -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs \
+    -Dopensourceframework.server.port=8082 -Dopensourceframework.profiles.active=dev -Dopensourceframework.env.logger.version=1.0.0 -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs \
     -Dopensourceframework.env.logger.level=info -Dopensourceframework.env.module=${rootArtifactId} -Dnacos.service.namespace=c99551cc-3877-48cb-8d80-e3261c4443d6 \
     -Dnacos.service.address=10.53.157.115:8848 -Dnacos.service.version=1.0.0 -Dnacos.service.dataIds=${rootArtifactId}.properties,opensources-framework-bases.properties  \
     -jar ${rootArtifactId}-boot.jar

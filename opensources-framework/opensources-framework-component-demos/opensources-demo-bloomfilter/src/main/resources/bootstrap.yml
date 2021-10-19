@@ -1,5 +1,5 @@
 #日志目录
-opensourceframework.log.workdir: ../../logs
+opensourceframework.env.logger.workdir: ../../logs
 opensourceframework.env.logger.level: info
 opensourceframework.env.module:
 

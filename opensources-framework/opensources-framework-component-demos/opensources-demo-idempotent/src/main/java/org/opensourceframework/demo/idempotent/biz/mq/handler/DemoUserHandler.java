@@ -1,9 +1,9 @@
 package org.opensourceframework.demo.idempotent.biz.mq.handler;
 
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
 import org.opensourceframework.base.helper.BeanHelper;
 import org.opensourceframework.demo.idempotent.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.demo.idempotent.biz.service.IDemoUserService;
+import org.opensourceframework.demo.idempotent.dto.request.user.DemoUserReqDto;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

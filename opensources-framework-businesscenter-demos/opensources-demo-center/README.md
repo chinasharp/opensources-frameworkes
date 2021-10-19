@@ -1,20 +1,22 @@
 ## 快速启动  
     IDE启动,VM options设置参数:
+    #-Djava.library.path=/usr/local/opt/tomcat-native/lib
     -Dopensourceframework.server.port=8081
     -Dopensourceframework.profiles.active=dev
-    -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs
+    -Dopensourceframework.env.logger.workdir=/Users/yuce/work/logs
     -Dopensourceframework.env.logger.level=debug
     -Dopensourceframework.service.version=1.0.0
     -Dopensourceframework.env.module=opensourceframework-demo-center
-    -Dnacos.server.username=codeuser
-    -Dnacos.server.password=codeuser3321
-    -Dnacos.server.address=127.0.0.1:8848
-    -Dnacos.server.namespace=233bc25b-3177-4f78-86e7-2cc90f8bde26
-    -Dnacos.config.dataIds=opensourceframework-common.properties,opensourceframework-demo-center.properties
+    -Dopensourceframework.service.server.username=nacos
+    -Dopensourceframework.service.server.password=nacos
+    -Dopensourceframework.service.server.address=127.0.0.1:8848
+    -Dopensourceframework.service.server.namespace=ba5a5579-b0d2-4470-a106-82dc86c676cc
+    -Dopensourceframework.config.dataIds=opensourceframework-common.properties,opensourceframework-demo-center.properties
 
-    说明: nacos.server.namespace             nacos服务器namespace值
-         nacos.server.address               nacos服务器ip:port
-         opensourceframework.log.workdir    日志存放目录
+    说明: opensourceframework.service.server.namespace             nacos服务器namespace值
+         opensourceframework.service.server.address               nacos服务器地址ip:port
+         opensourceframework.config.dataIds                       nacos config配置名称
+         opensourceframework.env.logger.workdir                   日志存放目录
          
 
     2 命令行启动:参数说明
@@ -25,7 +27,7 @@
     -XX:HeapDumpPath=/tmp/heapdump.hprof 指定导出堆信息时的路径或文件名
     具体命令:
     java -server -Xms2g -Xmx2g -Xmn1g -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof
-    -Dopensourceframework.server.port=8082 -Dopensourceframework.profiles.active=dev -Dopensourceframework.log.version=1.0.0 -Dopensourceframework.log.workdir=/Users/yuce/work/data/logs \
+    -Dopensourceframework.server.port=8082 -Dopensourceframework.profiles.active=dev -Dopensourceframework.env.logger.version=1.0.0 -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs \
     -Dopensourceframework.env.logger.level=info -Dopensourceframework.env.module=opensources-demo-center -Dnacos.service.namespace=c99551cc-3877-48cb-8d80-e3261c4443d6 \
     -Dnacos.service.address=127.0.0.1:8848 -Dnacos.service.version=1.0.0 -Dnacos.service.dataIds=opensources-demo-center.properties,opensources-framework-bases.properties  \
     -jar opensources-demo-center-boot.jar
