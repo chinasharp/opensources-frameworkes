@@ -2,6 +2,9 @@ package org.opensourceframework.starter.nacos.registry.springcloud;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.alibaba.cloud.nacos.registry.NacosRegistrationCustomizer;
+import com.google.common.base.Joiner;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.MapUtils;
 import org.opensourceframework.starter.nacos.helper.MetadataHelper;
 import org.opensourceframework.starter.nacos.helper.ReflectHelper;
 import org.apache.commons.lang3.StringUtils;
@@ -34,10 +37,16 @@ public class NacosRegistration extends com.alibaba.cloud.nacos.registry.NacosReg
 
         Map<String, String> metadata = getNacosProperties().getMetadata();
         ApplicationContext context = getApplicationContext();
-        String restFullMetaData = MetadataHelper.getMetaDataForRestFull(context);
 
-        if (StringUtils.isNotBlank(restFullMetaData)) {
-            metadata.put("spring cloud.metadata-service.urls", restFullMetaData);
+        Map<String , List<String>> serviceListMap = MetadataHelper.getDubboServiceList(context);
+        if (MapUtils.isNotEmpty(serviceListMap)) {
+            metadata.put("dubbo.services.invoke.methods", serviceListMap.toString());
+        }
+
+        serviceListMap = MetadataHelper.getSpringCloudServiceList(context);
+
+        if (MapUtils.isNotEmpty(serviceListMap)) {
+            metadata.put("springcloud.services.urls", serviceListMap.toString());
         }
 
     }
