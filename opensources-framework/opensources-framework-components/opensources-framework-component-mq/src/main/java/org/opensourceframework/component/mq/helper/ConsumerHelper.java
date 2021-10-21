@@ -172,7 +172,7 @@ public class ConsumerHelper {
         }
         MessageResponse result = processorBean.process(obj);
 
-        if (result == null || CommonCanstant.SUCCESS_CODE == result.getErrCode()) {
+        if (result == null || CommonCanstant.SUCCESS_CODE == result.getCode()) {
             if(msgType == MsgTypeConstant.CONCURRENTLY) {
                 consumeStatus = ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
