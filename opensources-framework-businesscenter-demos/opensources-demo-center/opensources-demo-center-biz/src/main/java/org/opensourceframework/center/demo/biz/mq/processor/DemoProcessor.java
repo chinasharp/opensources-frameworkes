@@ -1,7 +1,7 @@
 package org.opensourceframework.center.demo.biz.mq.processor;
 
 import com.alibaba.fastjson.JSON;
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
 import org.opensourceframework.center.demo.biz.cache.DemoCache;
 import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.center.demo.biz.mq.handler.DemoHandler;
@@ -30,7 +30,6 @@ import javax.annotation.Resource;
 @Component
 @MQSubscribe(topic = "${mq.demouser.subscribe.registryvo.topic}", tag = "${mq.demouser.subscribe.registryvo.tag}" ,
 		consumer = "${mq.demouser.subscribe.registryvo.consumer}")
-//@MQSubscribe(topic = MQConstant.DEMO_USER_TOPIC, tag = MQConstant.DEMO_USER_TAG ,consumer = MQConstant.DEMO_USER_CONSUMER)
 public class DemoProcessor implements IMessageProcessor<MessageVo> {
 	private static final Logger loger = LoggerFactory.getLogger(DemoProcessor.class);
 	@Resource

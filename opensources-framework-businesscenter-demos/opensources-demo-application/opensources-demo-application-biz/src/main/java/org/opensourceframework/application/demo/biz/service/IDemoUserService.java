@@ -1,7 +1,7 @@
 package org.opensourceframework.application.demo.biz.service;
 
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
-import org.opensourceframework.center.demo.api.dto.response.user.DemoUserRespDto;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.response.DemoUserRespDto;
 import org.opensourceframework.base.rest.RestResponse;
 
 /**
@@ -11,6 +11,6 @@ import org.opensourceframework.base.rest.RestResponse;
  * @since 1.0.0
  *
  */
-public interface IDemoService {
+public interface IDemoUserService {
 	RestResponse<DemoUserRespDto> saveOrUpdate(DemoUserReqDto demoUserReqDto);
 }

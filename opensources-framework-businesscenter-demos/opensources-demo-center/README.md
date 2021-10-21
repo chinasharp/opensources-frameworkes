@@ -1,6 +1,6 @@
 ## 快速启动  
     IDE启动,VM options设置参数:
-    #-Djava.library.path=/usr/local/opt/tomcat-native/lib
+    #-Djava.library.path=java_native_library
     -Dopensourceframework.server.port=8081
     -Dopensourceframework.profiles.active=dev
     -Dopensourceframework.env.logger.workdir=/Users/yuce/work/logs
@@ -11,8 +11,8 @@
     -Dopensourceframework.service.server.password=nacos
     -Dopensourceframework.service.server.address=127.0.0.1:8848
     -Dopensourceframework.service.server.namespace=ba5a5579-b0d2-4470-a106-82dc86c676cc
+    -Dopensourceframework.services.group=opensources-framework-demo
     -Dopensourceframework.config.dataIds=opensourceframework-common.properties,opensourceframework-demo-center.properties
-
     说明: opensourceframework.service.server.namespace             nacos服务器namespace值
          opensourceframework.service.server.address               nacos服务器地址ip:port
          opensourceframework.config.dataIds                       nacos config配置名称
@@ -172,7 +172,7 @@
         3.boot模块工程结构:
             3.1 包结构:
                 |-- config
-                    |-- RootContextConfig.java
+                    |-- org.opensourceframework.center.demo.member.boot.config.RootContextConfig.java
                     |-- CenterDataMapperConfig.java
                     |-- CacheConfig.java
                     |-- XxxConfig.java

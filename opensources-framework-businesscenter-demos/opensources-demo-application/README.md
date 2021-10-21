@@ -1,5 +1,4 @@
-boot module说明
-    
+### boot module说明
     1. application-xxx.yml文件说明,只配置基本的配置,大部分配置在nacos中
        application-dev.yml  开发环境文件
        application-test.yml 测试环境文件
@@ -17,32 +16,38 @@ boot module说明
        @EnableDiscoveryClient        服务注册与发现开启
        @ComponentScan({"org.opensourceframework"})  Spring扫描注解注入路径 
        
-Nacos配置说明
-
+### Nacos配置说明
     Data Id:opensources-demo-application.properties
     Group:opensources-demo-application
     配置格式:Properties
     配置内容:
     # 调用中心服务配置
-    provider.demo.service.group=opensources-demo-center
+    provider.demo.service.group=opensourceframework-demo-center
     provider.demo.service.version=1.0.0
     provider.demo.service.protocol=dubbo
 
 
-启动说明
-
+### 启动说明
     1.IDE启动,VM options设置参数:
+    #-Djava.library.path=java_native_library
     -Dopensourceframework.server.port=8082
-    -Dspring.profiles.active=dev
-    -Dopensourceframework.env.logger.workdir=/Users/yuce/work/data/logs
+    -Dopensourceframework.profiles.active=dev
+    -Dopensourceframework.env.logger.workdir=/Users/yuce/work/logs
     -Dopensourceframework.env.logger.level=debug
-    -Dnacos.server.username=codeuser
-    -Dnacos.server.password=codeuser3321
-    -Dnacos.server.namespace=233bc25b-3177-4f78-86e7-2cc90f8bde26
-    -Dnacos.server.address=127.0.0.1:8848
-    -Dnacos.server.dataIds=common.properties,opensources-demo-application.properties
-    
-    说明:opensources-demo-application.properties为本应用配置,若需公共配置,比如mongoDB连接 、MQ连接 、Redis连接等
+    -Dopensourceframework.service.version=1.0.0
+    -Dopensourceframework.env.module=opensourceframework-demo-application
+    -Dopensourceframework.service.server.username=nacos
+    -Dopensourceframework.service.server.password=nacos
+    -Dopensourceframework.service.server.address=127.0.0.1:8848
+    -Dopensourceframework.service.server.namespace=ba5a5579-b0d2-4470-a106-82dc86c676cc
+    -Dopensourceframework.services.group=opensources-framework-demo
+    -Dopensourceframework.subscribed.services=opensourceframework-demo-center
+    -Dopensourceframework.config.dataIds=opensourceframework-common.properties,opensourceframework-demo-application.properties
+        
+    说明: opensourceframework.service.server.namespace             nacos服务器namespace值
+         opensourceframework.service.server.address               nacos服务器地址ip:port
+         opensourceframework.config.dataIds                       nacos config配置名称
+         opensourceframework.env.logger.workdir                   日志存放目录
 
     2.命令行启动：参数说明
     Xms/Xmx 大小通常配置为总机器内存的3/5   
@@ -120,7 +125,7 @@ Nacos配置说明
         3.boot模块工程结构：
             3.1 包结构：
                 |-- config
-                    |-- RootContextConfig.java
+                    |-- org.opensourceframework.center.demo.member.boot.config.RootContextConfig.java
                     |-- CenterDataMapperConfig.java
                     |-- CacheConfig.java
                     |-- XxxConfig.java

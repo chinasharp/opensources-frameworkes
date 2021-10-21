@@ -4,7 +4,7 @@
 #opensourceframework.env.module:
 
 opensourceframework.configs.group: ${opensourceframework.env.module}
-opensourceframework.services.group: ${opensourceframework.env.module}
+opensourceframework.dubbo.services.group: ${opensourceframework.env.module}
 opensourceframework.services.version: 1.0.0
 
 server.port: ${opensourceframework.server.port}
@@ -44,13 +44,12 @@ feign:
 # Dubbo RPC服务配置
 dubbo:
   scan:
-    base-packages: org.opensourceframework.center.user.biz
+    base-packages: org.opensourceframework.center.demo.biz
   protocols:
     dubbo:
       name: dubbo
       port: -1
       threads: 250
-      host:
   registry:
     # 挂载到 Spring Cloud 注册中心
     address: spring-cloud://localhost
@@ -61,7 +60,7 @@ dubbo:
 # 可配置到nacos
 mybatis:
   #指定mybatis xml映射文件的资源路径 (示例：classpath*:/com/opensourceframework/center/user/mybatis/org.opensourceframework.user.bloomfilter.mybatis.mapper/xml/*.xml)
-  mapperLocations: classpath*:com/opensourceframework/center/user/mybatis/mapper/*.xml
+  mapperLocations: classpath*:com/opensourceframework/center/demo/mybatis/mapper/*.xml
   #指定mybatis 类型别名
   typeAliasesPackage:
   #指定mybatis 配置文件的资源路径

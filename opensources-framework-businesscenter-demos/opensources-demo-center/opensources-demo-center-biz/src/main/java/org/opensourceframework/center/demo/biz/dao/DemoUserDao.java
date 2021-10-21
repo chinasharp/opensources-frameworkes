@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
-import org.opensourceframework.center.demo.biz.dao.mapper.DemoMapper;
+import org.opensourceframework.center.demo.biz.dao.mapper.DemoUserMapper;
 import org.opensourceframework.component.dao.contant.SqlStatementContant;
 import org.opensourceframework.starter.mybatis.base.dao.BizBaseDao;
 import org.slf4j.Logger;
@@ -22,10 +22,10 @@ import java.util.List;
  *
  */
 @Repository
-public class DemoDao extends BizBaseDao<DemoUserEo, Long> {
-	private static Logger logger = LoggerFactory.getLogger(DemoDao.class);
+public class DemoUserDao extends BizBaseDao<DemoUserEo, Long> {
+	private static Logger logger = LoggerFactory.getLogger(DemoUserDao.class);
 	@Resource
-	private DemoMapper demoUserMapper;
+	private DemoUserMapper demoUserMapper;
 
 	public PageInfo<DemoUserEo> findPageByMapper(DemoUserEo queryEo, Integer currentPage, Integer pageSize) {
 		logger.info("exec findPage where:{} ,currentPage , pageSize ", JSON.toJSONString(queryEo), currentPage, pageSize);

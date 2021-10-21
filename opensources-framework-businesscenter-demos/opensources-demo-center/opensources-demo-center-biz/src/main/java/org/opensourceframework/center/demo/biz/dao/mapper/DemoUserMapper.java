@@ -14,7 +14,7 @@ import java.util.List;
  * @since 1.0.0
  *
  */
-public interface DemoMapper extends BaseMapper<DemoUserEo, Long> {
+public interface DemoUserMapper extends BaseMapper<DemoUserEo, Long> {
 	@Select({"<script>" ,
 			" select u.id , u.account , u.password , u.phone , u.member_card_no " ,
 			"     from user u  ",

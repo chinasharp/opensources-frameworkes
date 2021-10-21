@@ -2,9 +2,9 @@ package org.opensourceframework.center.demo.biz.service.impl;
 
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
-import org.opensourceframework.center.demo.biz.dao.DemoDao;
 import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.center.demo.biz.service.IDemoService;
+import org.opensourceframework.center.demo.biz.dao.DemoUserDao;
 import org.opensourceframework.starter.mybatis.base.dao.BizBaseDao;
 import org.opensourceframework.starter.mybatis.base.service.impl.BizBaseServiceImpl;
 import org.apache.commons.collections.CollectionUtils;
@@ -24,7 +24,7 @@ import java.util.List;
 @Service
 public class DemoServiceImpl extends BizBaseServiceImpl<DemoUserEo, Long> implements IDemoService {
 	@Autowired
-	private DemoDao demoUserDao;
+	private DemoUserDao demoUserDao;
 
 	/**
 	 * 获取操作的Dao Bean

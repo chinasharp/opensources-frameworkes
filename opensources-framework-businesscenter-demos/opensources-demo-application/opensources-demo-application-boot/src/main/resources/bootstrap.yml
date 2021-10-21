@@ -1,13 +1,7 @@
 #日志目录
-opensourceframework.env.logger.workdir: ../../logs
-opensourceframework.env.logger.level:
-opensourceframework.env.logger.version:
-
-nacos.services.group: ${opensourceframework.services.group}
-nacos.configs.group: ${opensourceframework.env.module}
-
-dubbo.service.group: ${opensourceframework.env.module}
-dubbo.service.version: 1.0.0
+opensourceframework.configs.group: ${opensourceframework.env.module}
+opensourceframework.dubbo.services.group: ${opensourceframework.env.module}
+opensourceframework.services.version: 1.0.0
 
 server.port: ${opensourceframework.server.port}
 
@@ -24,25 +18,25 @@ spring:
   #服务注册中心与配置中心配置
   cloud:
     nacos:
-      username: ${nacos.server.username}
-      password: ${nacos.server.password}
+      username: ${opensourceframework.service.server.username}
+      password: ${opensourceframework.service.server.password}
       discovery:
         enabled: true
         register-enabled: true
-        server-addr: ${nacos.server.address}
-        group: ${nacos.services.group}
-        namespace: ${nacos.server.namespace}
+        server-addr: ${opensourceframework.service.server.address}
+        group: ${opensourceframework.services.group}
+        namespace: ${opensourceframework.service.server.namespace}
       config:
-        server-addr: ${nacos.server.address}
-        group: ${nacos.configs.group}
-        namespace: ${nacos.server.namespace}
-        shared-data-ids: ${nacos.config.dataIds}
-        refreshable-dataids: ${nacos.config.dataIds}
+        server-addr: ${opensourceframework.service.server.address}
+        group: ${opensourceframework.configs.group}
+        namespace: ${opensourceframework.service.server.namespace}
+        shared-data-ids: ${opensourceframework.config.dataIds}
+        refreshable-dataids: ${opensourceframework.config.dataIds}
 
 dubbo:
   cloud:
     # The subscribed services in consumer side
-    subscribed-services: ${opensourceframework.subscribed.services}
+    subscribed-services: opensourceframework-demo-center
   protocols:
     dubbo:
       name: dubbo
@@ -53,6 +47,7 @@ dubbo:
   registry:
     address: spring-cloud://localhost
 
+
 ribbon:
   nacos:
     enabled: true
@@ -61,12 +56,12 @@ ribbon:
 # 实际使用中配置nacos中
 #方便代码中声明生产者服务名引用 多个前缀为provider.xxxx.service.
 #示例代码
-#在org.opensourceframework.application.user.biz.init。DemoController 中对Dubbo服务的声明：
+#在org.opensourceframework.application.user.biz.init。DemoUserController 中对Dubbo服务的声明：
 #    @Reference(group = "${provider.user.service.group}" , version = "${provider.user.service.version}" , protocol = "${provider.user.service.protocol}")
 #    private IUserDemoApi demoUserApi;
-#在org.opensourceframework.application.user.biz.feignclients.feignservice.DemoFeignService 中RestFull服务名的声明
+#在org.opensourceframework.application.user.biz.feignclients.feignservice.DemoUserFeignService 中RestFull服务名的声明
 #    @FeignClient(name="${provider.user.service.group}" , path = "/v1/demouser")
-#    public interface DemoFeignService{
+#    public interface DemoUserFeignService{
 #    }
 
 #provider.xxxx.service.group: opensources-xxxx-center

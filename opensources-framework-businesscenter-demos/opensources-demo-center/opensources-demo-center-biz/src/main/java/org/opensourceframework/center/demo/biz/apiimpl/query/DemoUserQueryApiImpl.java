@@ -1,9 +1,9 @@
 package org.opensourceframework.center.demo.biz.apiimpl.query;
 
 import com.github.pagehelper.PageInfo;
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
-import org.opensourceframework.center.demo.api.dto.response.user.DemoUserRespDto;
-import org.opensourceframework.center.demo.api.query.user.IDemoUserQueryApi;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.response.DemoUserRespDto;
+import org.opensourceframework.center.demo.api.query.IDemoUserQueryApi;
 import org.opensourceframework.base.rest.RestResponse;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ import java.util.List;
  * @since 1.0.0
  *
  */
-@DubboService(group = "${dubbo.service.group}", version = "${dubbo.service.version}", protocol = "dubbo")
+@DubboService(group = "${opensourceframework.dubbo.services.group}", version = "${opensourceframework.services.version}" ,protocol = "dubbo")
 @RestController
 @RequestMapping("/v1/query")
 public class DemoUserQueryApiImpl implements IDemoUserQueryApi {

@@ -1,9 +1,9 @@
 package org.opensourceframework.application.demo.biz.service.impl;
 
-import org.opensourceframework.application.demo.biz.feignclients.feignservice.DemoFeignService;
-import org.opensourceframework.application.demo.biz.service.IDemoService;
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
-import org.opensourceframework.center.demo.api.dto.response.user.DemoUserRespDto;
+import org.opensourceframework.application.demo.biz.feignclients.feignservice.DemoUserFeignService;
+import org.opensourceframework.application.demo.biz.service.IDemoUserService;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.response.DemoUserRespDto;
 import org.opensourceframework.base.rest.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class DemoServiceImpl implements IDemoService {
+public class DemoUserServiceImpl implements IDemoUserService {
 	@Lazy
 	@Autowired
-	private DemoFeignService demoUserFeignService;
+	private DemoUserFeignService demoUserFeignService;
 
 	@Override
 	public RestResponse<DemoUserRespDto> saveOrUpdate(DemoUserReqDto demoUserReqDto){

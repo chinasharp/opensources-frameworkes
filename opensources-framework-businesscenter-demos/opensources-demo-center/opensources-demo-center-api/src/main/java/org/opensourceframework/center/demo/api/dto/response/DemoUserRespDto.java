@@ -1,4 +1,4 @@
-package org.opensourceframework.center.demo.api.dto.response.user;
+package org.opensourceframework.center.demo.api.dto.response;
 
 import org.opensourceframework.base.dto.BaseDto;
 import io.swagger.annotations.ApiModel;

@@ -1,10 +1,11 @@
 package org.opensourceframework.application.demo.biz.feignclients.feignservice;
 
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
-import org.opensourceframework.center.demo.api.dto.response.user.DemoUserRespDto;
-import org.opensourceframework.base.rest.RestResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.opensourceframework.application.demo.biz.feignclients.callback.DemoUserFeignServiceFallbackFactory;
+import org.opensourceframework.base.rest.RestResponse;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.response.DemoUserRespDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,8 +19,10 @@ import java.util.List;
  *
  */
 @Api(tags={"demoUser 操作api"})
-@FeignClient(name="${provider.user.service.group}" , path = "/v1/op")
-public interface DemoFeignService {
+@FeignClient(name="${provider.demo.service.group}" , path = "/v1/op" ,
+		contextId = "org.opensourceframework.application.demo.biz.feignclients.feignservice.DemoUserFeignService",
+		fallbackFactory = DemoUserFeignServiceFallbackFactory.class)
+public interface DemoUserFeignService {
 	/**
 	 * 保存或者更新
 	 *

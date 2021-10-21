@@ -1,7 +1,7 @@
 package org.opensourceframework.center.demo.biz.mq.handler;
 
 
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
 import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.center.demo.biz.service.IDemoService;
 import org.opensourceframework.base.helper.BeanHelper;

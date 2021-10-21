@@ -1,7 +1,7 @@
-package org.opensourceframework.center.demo.api.op.user;
+package org.opensourceframework.center.demo.api.op;
 
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
-import org.opensourceframework.center.demo.api.dto.response.user.DemoUserRespDto;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.response.DemoUserRespDto;
 import org.opensourceframework.base.rest.RestResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

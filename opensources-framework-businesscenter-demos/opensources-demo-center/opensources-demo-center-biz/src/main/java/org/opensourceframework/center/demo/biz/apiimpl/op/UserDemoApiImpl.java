@@ -1,16 +1,16 @@
-package org.opensourceframework.center.demo.biz.apiimpl;
+package org.opensourceframework.center.demo.biz.apiimpl.op;
 
-import org.opensourceframework.center.demo.api.op.user.IUserDemoApi;
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
-import org.opensourceframework.center.demo.api.dto.response.user.DemoUserRespDto;
-import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
-import org.opensourceframework.center.demo.biz.service.IDemoService;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.opensourceframework.base.helper.BeanHelper;
 import org.opensourceframework.base.rest.RestResponse;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.response.DemoUserRespDto;
+import org.opensourceframework.center.demo.api.op.IUserDemoApi;
+import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
+import org.opensourceframework.center.demo.biz.service.IDemoService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.List;
  * @since 1.0.0
  *
  */
-@DubboService(group = "${dubbo.service.group}", version = "${dubbo.service.version}", protocol = "dubbo")
+@DubboService(group = "${opensourceframework.dubbo.services.group}", version = "${opensourceframework.services.version}", protocol = "dubbo")
 @RestController
 @RequestMapping("/v1/op")
 public class UserDemoApiImpl implements IUserDemoApi {
@@ -54,7 +54,7 @@ public class UserDemoApiImpl implements IUserDemoApi {
         DemoUserRespDto demoUserRespDto = new DemoUserRespDto();
         BeanHelper.copyProperties(demoUserRespDto, demoUserEo);
 
-        return RestResponse.buildSuccessResponse(demoUserRespDto);
+        return RestResponse.success(demoUserRespDto);
     }
 
     /**

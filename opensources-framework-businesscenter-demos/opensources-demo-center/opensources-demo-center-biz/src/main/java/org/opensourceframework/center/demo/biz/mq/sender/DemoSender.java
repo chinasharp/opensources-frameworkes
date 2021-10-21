@@ -1,7 +1,7 @@
 package org.opensourceframework.center.demo.biz.mq.sender;
 
 import com.alibaba.fastjson.JSON;
-import org.opensourceframework.center.demo.api.dto.request.user.DemoUserReqDto;
+import org.opensourceframework.center.demo.api.dto.request.DemoUserReqDto;
 import org.opensourceframework.center.demo.biz.mq.registryvo.DemoRegistryVo;
 import org.opensourceframework.base.vo.MessageVo;
 import org.opensourceframework.component.mq.api.IMessageSender;

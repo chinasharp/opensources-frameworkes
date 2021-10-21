@@ -17,9 +17,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan({"org.opensourceframework"})
-public class ApplicationBoot extends BaseBootApplication {
+public class ApplicationDemoBoot extends BaseBootApplication {
 	public static void main(String[] args) throws Exception {
-		new AbstractBoot(ApplicationBoot.class , args) {
+		new AbstractBoot(ApplicationDemoBoot.class , args) {
 			@Override
 			public void execute() {
 				OpensourceFrameworkSystem.init();
