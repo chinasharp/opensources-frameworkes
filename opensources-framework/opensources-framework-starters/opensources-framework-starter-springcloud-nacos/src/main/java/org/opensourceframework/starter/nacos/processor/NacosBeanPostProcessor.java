@@ -1,5 +1,7 @@
 package org.opensourceframework.starter.nacos.processor;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.opensourceframework.starter.nacos.helper.IpAddressHelper;
 import org.opensourceframework.starter.nacos.helper.ReflectHelper;
 import org.opensourceframework.starter.nacos.registry.springcloud.NacosRegistration;
@@ -13,10 +15,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 通过Bean前置处理扩展NacosRegistration
@@ -43,7 +42,7 @@ public class NacosBeanPostProcessor implements BeanDefinitionRegistryPostProcess
 			beanDefinitionRegistry.registerBeanDefinition(NACOS_REGISTRATION_BEAN, beanDefinition);
 		}
 
-		// 给protocolConfig设置host属性 解决没配置host属性出现的connect refuse错误
+		// DubboProtocolConfig设置host属性 解决没配置host属性 debug模式出现connect refuse错误
 		beanDefinition = beanDefinitionRegistry.getBeanDefinition(PROTOCOL_DUBBO_CONFIG);
 		if(beanDefinition != null){
 			Map<String , Object> attributeMap = (Map)beanDefinition.getAttribute("configurationProperties");
@@ -52,6 +51,12 @@ public class NacosBeanPostProcessor implements BeanDefinitionRegistryPostProcess
 				newAttributeMap.put(k , v);
 			});
 			newAttributeMap.put("host" , IpAddressHelper.resolveLocalIp());
+
+			// 单机同时运行多个dubbo应用时 避免端口冲突
+			Object port = newAttributeMap.get("port");
+			if(port == null || Objects.equals(-1 , port)){
+				newAttributeMap.put("port" , RandomUtils.nextInt(20880 , 21880));
+			}
 			beanDefinition.setAttribute("configurationProperties" , Collections.unmodifiableMap(newAttributeMap));
 			System.out.println(newAttributeMap);
 		}
