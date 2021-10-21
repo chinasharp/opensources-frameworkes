@@ -51,7 +51,7 @@ public class IdempotentUseDemo {
         DemoUserEo eo = new DemoUserEo();
         BeanHelper.copyProperties(eo , demoUserReqDto);
         demoUserService.insert(eo);
-        return RestResponse.buildSuccessResponse(eo.getId());
+        return RestResponse.success(eo.getId());
     }
 
     @PostMapping("/biz/update")
@@ -67,7 +67,7 @@ public class IdempotentUseDemo {
         eo = demoUserService.findById(demoUserId);
         DemoUserRespDto respDto = new DemoUserRespDto();
         BeanHelper.copyProperties(respDto , eo);
-        return RestResponse.buildSuccessResponse(respDto);
+        return RestResponse.success(respDto);
     }
 
     @PostMapping("/biz/bizOp")
@@ -75,6 +75,6 @@ public class IdempotentUseDemo {
     @ApiOperation(value="幂等重复操作,在validTime值的时间内 返回的结果数据一致 0为永远返回一致的结果", notes="幂等重复操作 validTime:幂等数据有效期,单位秒,0表示永久有效" )
     public RestResponse<Long> bizOp(){
         Long timeMillis = System.currentTimeMillis();
-        return RestResponse.buildSuccessResponse(timeMillis);
+        return RestResponse.success(timeMillis);
     }
 }

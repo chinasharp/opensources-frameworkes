@@ -37,6 +37,6 @@ public class DemoController {
 			BeanHelper.copyProperties(respDto, demoEo);
 		}
 
-		return RestResponse.buildSuccessResponse(respDto);
+		return RestResponse.success(respDto);
 	}
 }

@@ -47,7 +47,7 @@ public class DemoController {
         DemoUserRespDto demoUserRespDto = new DemoUserRespDto();
         BeanHelper.copyProperties(demoUserRespDto, demoEo);
 
-        return RestResponse.buildSuccessResponse(demoUserRespDto);
+        return RestResponse.success(demoUserRespDto);
     }
 
     private DemoUserReqDto buildReqDto(){
@@ -79,6 +79,6 @@ public class DemoController {
         DemoUserRespDto demoUserRespDto = new DemoUserRespDto();
         BeanHelper.copyProperties(demoUserRespDto, demoEo);
 
-        return RestResponse.buildSuccessResponse(demoUserRespDto);
+        return RestResponse.success(demoUserRespDto);
     }
 }

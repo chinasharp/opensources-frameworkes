@@ -1,13 +1,13 @@
 package org.opensourceframework.demo.cache.ctrl;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.opensourceframework.base.rest.RestResponse;
 import org.opensourceframework.demo.cache.cache.local.UserLocalCache;
 import org.opensourceframework.demo.cache.cache.mix.UserMixCache;
 import org.opensourceframework.demo.cache.cache.remote.UserRemoteCache;
 import org.opensourceframework.demo.cache.entity.UserFactory;
 import org.opensourceframework.demo.cache.entity.UserInfo;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,7 +40,7 @@ public class CacheDemoController {
     public RestResponse<UserInfo> addMixCache(@RequestParam(name = "id") Long id){
         UserInfo userInfo = UserFactory.buildUserInfo(id);
         userMixCache.setCache(userInfo);
-        return RestResponse.buildSuccessResponse(userInfo);
+        return RestResponse.success(userInfo);
     }
 
     @PostMapping("/local_cache/add")
@@ -48,7 +48,7 @@ public class CacheDemoController {
     public RestResponse<UserInfo> addLocalache(@RequestParam(name = "id") Long id){
         UserInfo userInfo = UserFactory.buildUserInfo(id);
         userLocalCache.setCache(userInfo);
-        return RestResponse.buildSuccessResponse(userInfo);
+        return RestResponse.success(userInfo);
     }
 
     @PostMapping("/remote_cache/add")
@@ -56,28 +56,27 @@ public class CacheDemoController {
     public RestResponse<UserInfo> addRemoteCache(@RequestParam(name = "id") Long id){
         UserInfo userInfo = UserFactory.buildUserInfo(id);
         userRemoteCache.setCache(userInfo);
-        return RestResponse.buildSuccessResponse(userInfo);
+        return RestResponse.success(userInfo);
     }
 
     @PostMapping("/mix_cache/{id}")
     @ApiOperation(value="通过混合缓存获取数据", notes="通过混合缓存获取数据")
     public RestResponse<UserInfo> getMixCache(@PathVariable(name = "id") Long id){
         UserInfo userInfo = userMixCache.getCache(id);
-        return RestResponse.buildSuccessResponse(userInfo);
+        return RestResponse.success(userInfo);
     }
 
     @PostMapping("/local_cache/{id}")
     @ApiOperation(value="使用本地缓存获取数据", notes="使用本地缓存获取数据")
     public RestResponse<UserInfo> getLocalache(@PathVariable(name = "id") Long id){
         UserInfo userInfo = userLocalCache.getCache(id);
-        return RestResponse.buildSuccessResponse(userInfo);
+        return RestResponse.success(userInfo);
     }
 
     @PostMapping("/remote_cache/{id}")
     @ApiOperation(value="使用分布式缓存获取数据", notes="使用分布式缓存获取数据")
     public RestResponse<UserInfo> getRemoteCache(@PathVariable(name = "id") Long id){
         UserInfo userInfo = userRemoteCache.getCache(id);
-        return RestResponse.buildSuccessResponse(userInfo);
+        return RestResponse.success(userInfo);
     }
-
 }

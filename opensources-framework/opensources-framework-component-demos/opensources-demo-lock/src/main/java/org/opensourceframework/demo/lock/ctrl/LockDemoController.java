@@ -27,7 +27,7 @@ public class LockDemoController {
 	@ApiOperation(value="使用redis的分布式锁", notes="使用redis的分布式锁")
 	public RestResponse<Void> dubboSave(){
 		redisLock.cutPayment("opensourceframework");
-		return RestResponse.VOID;
+		return RestResponse.SUCESS;
 	}
 
 }

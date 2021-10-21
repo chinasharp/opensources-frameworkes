@@ -3,7 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--
     TODO 该类及类中的方法仅做示例，测试及上线阶段请自行删除，请勿在该类中编写真实的业务代码。
-    namespace值为org.opensourceframework.funds.configintegration.biz.dao.org.opensourceframework.user.bloomfilterr.mybatis.mapper.XxxMapper
 -->
 <mapper namespace="DemoMapper">
     <sql id="Base_Column_List">

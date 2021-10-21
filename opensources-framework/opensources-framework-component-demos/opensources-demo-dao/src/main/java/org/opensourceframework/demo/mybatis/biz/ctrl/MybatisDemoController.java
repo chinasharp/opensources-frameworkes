@@ -2,6 +2,9 @@ package org.opensourceframework.demo.mybatis.biz.ctrl;
 
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.opensourceframework.base.db.Condition;
 import org.opensourceframework.base.db.Restrictions;
 import org.opensourceframework.base.helper.BeanHelper;
@@ -11,9 +14,6 @@ import org.opensourceframework.demo.mybatis.api.request.DemoUserReqDto;
 import org.opensourceframework.demo.mybatis.api.response.DemoUserRespDto;
 import org.opensourceframework.demo.mybatis.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.demo.mybatis.biz.service.IDemoUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class MybatisDemoController {
 
 		DemoUserRespDto dto = new DemoUserRespDto();
 		BeanHelper.copyProperties(dto , demoUserEo);
-		return RestResponse.buildSuccessResponse(dto);
+		return RestResponse.success(dto);
 	}
 
 	@PostMapping(value = "/batchSave" , produces = "application/json")
@@ -58,7 +58,7 @@ public class MybatisDemoController {
 		eoList = demoUserService.batchSave(eoList);
 		List<DemoUserRespDto> respDtos = new ArrayList<>();
 		BeanHelper.copyCollection(reqDtos , eoList , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(respDtos);
+		return RestResponse.success(respDtos);
 	}
 
 	@GetMapping(value = "/findById" , produces = "application/json")
@@ -70,7 +70,7 @@ public class MybatisDemoController {
 			respDto = new DemoUserRespDto();
 			BeanHelper.copyProperties(respDto, demoUserEo);
 		}
-		return RestResponse.buildSuccessResponse(respDto);
+		return RestResponse.success(respDto);
 	}
 
 	@PostMapping(value = "/findByIdList" , produces = "application/json")
@@ -79,7 +79,7 @@ public class MybatisDemoController {
 		List<DemoUserEo> eoList = demoUserService.findByIds(idList);
 		List<DemoUserRespDto> dtoList = Lists.newArrayList();
 		BeanHelper.copyCollection(dtoList , eoList , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(dtoList);
+		return RestResponse.success(dtoList);
 	}
 
 	@PostMapping(value = "/findByIds" , produces = "application/json")
@@ -89,7 +89,7 @@ public class MybatisDemoController {
 		List<DemoUserEo> eoList = demoUserService.findByIds(idArray);
 		List<DemoUserRespDto> dtoList = Lists.newArrayList();
 		BeanHelper.copyCollection(dtoList , eoList , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(dtoList);
+		return RestResponse.success(dtoList);
 	}
 
 	@PostMapping(value = "/findPage" , produces = "application/json")
@@ -113,7 +113,7 @@ public class MybatisDemoController {
 		PageInfo<DemoUserEo> pageInfoEo =  demoUserService.findPage(queryEo , currentPage , pageSize);
 		PageInfo<DemoUserRespDto> pageInfoDto = new PageInfo<>();
 		BeanHelper.copyPageInfo(pageInfoDto , pageInfoEo , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(pageInfoDto);
+		return RestResponse.success(pageInfoDto);
 	}
 
 	@PostMapping(value = "/findPageByMapper" , produces = "application/json")
@@ -130,7 +130,7 @@ public class MybatisDemoController {
 		PageInfo<DemoUserEo> pageInfoEo =  demoUserService.findPageByMapper(queryEo , currentPage ,pageSize);
 		PageInfo<DemoUserRespDto> pageInfoDto = new PageInfo<>();
 		BeanHelper.copyPageInfo(pageInfoDto , pageInfoEo , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(pageInfoDto);
+		return RestResponse.success(pageInfoDto);
 	}
 
 
@@ -147,7 +147,7 @@ public class MybatisDemoController {
 		List<DemoUserEo> eoList = demoUserService.findList(queryEo);
 		List<DemoUserRespDto> dtoList = Lists.newArrayList();
 		BeanHelper.copyCollection(dtoList , eoList , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(dtoList);
+		return RestResponse.success(dtoList);
 	}
 
 	@PostMapping(value = "/findByCondition" , produces = "application/json")
@@ -165,7 +165,7 @@ public class MybatisDemoController {
 		List<DemoUserEo> eoList = demoUserService.findByCondition(queryEo);
 		List<DemoUserRespDto> dtoList = Lists.newArrayList();
 		BeanHelper.copyCollection(dtoList , eoList , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(dtoList);
+		return RestResponse.success(dtoList);
 	}
 
 	@PostMapping(value = "/updateNotNull" , produces = "application/json")
@@ -178,7 +178,7 @@ public class MybatisDemoController {
 		DemoUserEo demoUserEo = demoUserService.findById(reqDto.getId());
 		DemoUserRespDto demoUserDto = new DemoUserRespDto();
 		BeanHelper.copyProperties(demoUserDto , demoUserEo);
-		return RestResponse.buildSuccessResponse(demoUserDto);
+		return RestResponse.success(demoUserDto);
 	}
 
 	@PostMapping(value = "/updateWithNull" , produces = "application/json")
@@ -191,7 +191,7 @@ public class MybatisDemoController {
 		DemoUserEo demoUserEo = demoUserService.findById(reqDto.getId());
 		DemoUserRespDto demoUserDto = new DemoUserRespDto();
 		BeanHelper.copyProperties(demoUserDto , demoUserEo);
-		return RestResponse.buildSuccessResponse(demoUserDto);
+		return RestResponse.success(demoUserDto);
 	}
 
 	@PostMapping(value = "/updateByCondition" , produces = "application/json")
@@ -207,7 +207,7 @@ public class MybatisDemoController {
 		List<DemoUserEo> eoList = demoUserService.findList(updateEo);
 		List<DemoUserRespDto> dtoList = Lists.newArrayList();
 		BeanHelper.copyCollection(dtoList , eoList , DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(dtoList);
+		return RestResponse.success(dtoList);
 	}
 
 	@PostMapping(value = "/upLoad")
@@ -215,7 +215,7 @@ public class MybatisDemoController {
 	public RestResponse<String> uploadImage(MultipartFile file)  {
 		String fileName = file.getOriginalFilename();
 		logger.info("获取到文件，文件名：{}, fileType:{}, logo:{}", fileName);
-		return RestResponse.buildSuccessResponse(fileName);
+		return RestResponse.success(fileName);
 	}
 
 	@PostMapping(value = "/findByMultipleCondition" , produces = "application/json")
@@ -240,6 +240,6 @@ public class MybatisDemoController {
 		List<DemoUserEo> eoList = demoUserService.findByCondition(conditionEo);
 		List<DemoUserRespDto> dtoList = Lists.newArrayList();
 		BeanHelper.copyCollection(dtoList, eoList, DemoUserRespDto.class);
-		return RestResponse.buildSuccessResponse(dtoList);
+		return RestResponse.success(dtoList);
 	}
 }
