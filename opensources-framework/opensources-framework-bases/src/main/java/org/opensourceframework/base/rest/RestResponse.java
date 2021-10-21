@@ -2,12 +2,11 @@ package org.opensourceframework.base.rest;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.opensourceframework.base.constants.CommonCanstant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.opensourceframework.base.constants.CommonCanstant;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,22 +22,19 @@ public class RestResponse<T> implements Serializable {
 	/**
 	 * 响应码
 	 */
-	@ApiModelProperty( name = "errCode", value = "发送响应码")
-	protected int errCode;
-
-    @ApiModelProperty( name = "resultStatus", value = "结果状态码")
-	protected String resultStatus;
+	@ApiModelProperty( name = "code", value = "请求响应码")
+	protected Integer code;
 
 	/**
 	 * 响应信息
 	 */
-	@ApiModelProperty( name = "errMsg", value = "发送响应信息")
-	protected String errMsg;
+	@ApiModelProperty( name = "message", value = "请求响应信息")
+	protected String message;
 
 	/**
 	 * 返回数据
 	 */
-	@ApiModelProperty( name = "data", value = "发送响应数据")
+	@ApiModelProperty( name = "data", value = "请求响应数据")
 	protected T data;
 
 	@JsonIgnore
@@ -49,93 +45,48 @@ public class RestResponse<T> implements Serializable {
 	@JSONField(serialize = false)
 	protected String exceptClass;
 
-	public static final RestResponse<Void> VOID = new RestResponse(null);
-	public static final RestResponse<Boolean> TRUE = new RestResponse(CommonCanstant.SUCCESS_CODE, CommonCanstant.SUCESS_MSG, Boolean.TRUE);
-	public static final RestResponse<Boolean> FALSE = new RestResponse(CommonCanstant.FAILURE_CODE, CommonCanstant.FAILURE_MSG, Boolean.FALSE);
+	public static final RestResponse<Void> SUCESS = new RestResponse(CommonCanstant.SUCCESS_CODE, CommonCanstant.SUCESS_MSG, null);
+	public static final RestResponse<Void> FAILURE = new RestResponse(CommonCanstant.FAILURE_CODE, CommonCanstant.FAILURE_MSG, null);
+	public static final RestResponse<Void>	ERROR =  new RestResponse(CommonCanstant.FAILURE_CODE, CommonCanstant.FAILURE_MSG, null);
+
+	public static final RestResponse<Boolean> TRUE = new RestResponse(CommonCanstant.SUCCESS_CODE, CommonCanstant.SUCESS_MSG, CommonCanstant.TRUE);
+	public static final RestResponse<Boolean> FALSE = new RestResponse(CommonCanstant.SUCCESS_CODE, CommonCanstant.SUCESS_MSG, CommonCanstant.FALSE);
+
 
 	public RestResponse() {
 		this(null);
 	}
 
+	public RestResponse(Integer code, String message) {
+		this.code = code;
+		this.message = message;
+	}
+
 	public RestResponse(T data) {
-		this.errCode = CommonCanstant.SUCCESS_CODE;
-		this.errMsg = CommonCanstant.SUCESS_MSG;
+		this.code = CommonCanstant.SUCCESS_CODE;
+		this.message = CommonCanstant.SUCESS_MSG;
 		this.data = data;
 	}
 
-	public RestResponse(int errCode, String failMessage) {
-		this.errCode = errCode;
-		this.errMsg = failMessage;
-	}
-
-	public static <T> RestResponse error(String errorMessage){
-		return new RestResponse(CommonCanstant.ERROR_CODE, errorMessage);
-	}
-
-	public static <T> RestResponse instance(int errCode , String errorMessage){
-		return new RestResponse(errCode, errorMessage);
-	}
-	public static <T> RestResponse instance(int errCode ,String resultStatus , String errorMessage){
-		return new RestResponse(errCode,resultStatus , errorMessage);
-	}
-
-	public static <T> RestResponse fail(int errCode ,String failMessage){
-		return new RestResponse(errCode, failMessage);
-	}
-
-
-	public RestResponse(int errCode, String errMsg, T data) {
-		this.errCode = errCode;
-		this.errMsg = errMsg;
+	public RestResponse(Integer code, String message, T data) {
+		this.code = code;
+		this.message = message;
 		this.data = data;
 	}
-	
-	public static <T> RestResponse<T> build(int errCode, String errMsg, T data) {
-		return new RestResponse(errCode, errMsg, data);
+
+	public static <T> RestResponse error(String errorMessage){return new RestResponse(CommonCanstant.ERROR_CODE, errorMessage);}
+	public static <T> RestResponse error(Integer errorCode ,String errorMessage){return new RestResponse(errorCode, errorMessage);}
+	public static <T> RestResponse success(Integer code , String message){return new RestResponse(code, message);}
+	public static <T> RestResponse success(Integer code , String message , T data){return new RestResponse(code ,message , data); }
+	public static <T> RestResponse success(T data){return new RestResponse(CommonCanstant.SUCCESS_CODE ,CommonCanstant.SUCESS_MSG , data);}
+	public static <T> RestResponse fail(Integer failCode ,String failMessage){
+		return new RestResponse(failCode, failMessage);
 	}
 
-	public RestResponse(int errCode, String resultStatus, String errMsg) {
-		this.errCode = errCode;
-		this.resultStatus = resultStatus;
-		this.errMsg = errMsg;
+	public static <T> RestResponse<T> build(Integer code, String message, T data) {
+		return new RestResponse(code, message, data);
 	}
 
-	public static <T> RestResponse<T> buildSuccessResponse(String errMsg, T data) {
-		return new RestResponse(0, errMsg, data);
-	}
-
-	public static <T> RestResponse<T> buildSuccessResponse(T data) {
-		return buildSuccessResponse("操作成功", data);
-	}
-
-
-	public static RestResponse<Long> createLong(Long value) {
-		return new RestResponse(value);
-	}
-
-	public static RestResponse<Short> createShort(Short value) {
-		return new RestResponse(value);
-	}
-
-	public static RestResponse<Integer> createInteger(Integer value) {
-		return new RestResponse(value);
-	}
-
-	public static RestResponse<Float> createFloat(Float value) {
-		return new RestResponse(value);
-	}
-
-	public static RestResponse<Double> createDouble(Double value) {
-		return new RestResponse(value);
-	}
-
-	public static RestResponse<BigDecimal> createBigDecimal(BigDecimal value) {
-		return new RestResponse(value);
-	}
-
-	public static RestResponse<Object> createObject(Object obj) {
-		return new RestResponse(obj);
-	}
 
 	public String getExceptCauseIp() {
 		return this.exceptCauseIp;
@@ -169,43 +120,35 @@ public class RestResponse<T> implements Serializable {
 		this.data = data;
 	}
 
-	public String getErrMsg() {
-		return errMsg;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setErrMsg(String errMsg) {
-		this.errMsg = errMsg;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-
-    public String getResultStatus() {
-        return resultStatus;
-    }
-
-    public void setResultStatus(String resultStatus) {
-        this.resultStatus = resultStatus;
-    }
 
     public Map<String, Object> toMap() {
 		Map<String, Object> map = new HashMap();
-		map.put("errCode", this.errCode);
-		map.put("errMsg", this.errMsg);
+		map.put("code", this.code);
+		map.put("message", this.message);
 		map.put("data", this.data);
 		return map;
 	}
 
-	public void setErrCode(int errCode) {
-		this.errCode = errCode;
+	public void setCode(int code) {
+		this.code = code;
 	}
 
-	public int getErrCode() {
-		return this.errCode;
+	public int getCode() {
+		return this.code;
 	}
 	public boolean isSuccess() {
-		return this != null && this.getErrCode() == 0;
+		return this != null && this.getCode() == 0;
 	}
 
 	@Override
 	public String toString() {
-		return "RestResponse [errCode=" + this.errCode + ", errMsg=" + this.errMsg + ", data=" + this.data + "]";
+		return "RestResponse [code=" + this.code + ", message=" + this.message + ", data=" + this.data + "]";
 	}
 }
