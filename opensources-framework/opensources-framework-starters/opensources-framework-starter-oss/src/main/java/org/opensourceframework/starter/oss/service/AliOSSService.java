@@ -1,13 +1,13 @@
 package org.opensourceframework.starter.oss.service;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 import org.opensourceframework.base.rest.RestResponse;
 import org.opensourceframework.starter.oss.config.OssConfig;
 import org.opensourceframework.starter.oss.util.HttpGetInputStreamUtils;
 import org.opensourceframework.starter.oss.vo.UploadBody;
 import org.opensourceframework.starter.oss.vo.UploadBodyStr;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -41,7 +41,7 @@ public class AliOSSService extends BaseService {
     		
     		if(in != null){
     			 b = IOUtils.toByteArray(in);
-    			 return RestResponse.buildSuccessResponse(b);
+    			 return RestResponse.success(b);
     		}
 		} catch (Exception e) {
 			logger.error("getByteArray失败：{}", e);
@@ -75,7 +75,7 @@ public class AliOSSService extends BaseService {
         	InputStream sbs = new ByteArrayInputStream(uploadBody.getFile()); 
         	if(uploadBody.getFileName() != null){
             	uploadToOSS(sbs,uploadBody.getFileName());
-            	return RestResponse.buildSuccessResponse(getAccessUrlPrefix()+uploadBody.getFileName());
+            	return RestResponse.success(getAccessUrlPrefix()+uploadBody.getFileName());
         	}
         	if(uploadBody.getBucketName() != null){
     			String randomFileName = System.nanoTime() + "_"+UUID.randomUUID().toString().replaceAll("-", "");
@@ -90,9 +90,9 @@ public class AliOSSService extends BaseService {
 				logger.info("ossFullPath:{}",ossFullPath);
             	uploadToOSS(sbs,ossFullPath);
             	if(uploadBody.getReturnPathType() == 1){
-            		return RestResponse.buildSuccessResponse(getAccessUrlPrefix() + ossFullPath);
+            		return RestResponse.success(getAccessUrlPrefix() + ossFullPath);
             	}else{
-            		return RestResponse.buildSuccessResponse(ossFullPath);
+            		return RestResponse.success(ossFullPath);
             	}
             	
         	}
@@ -123,7 +123,7 @@ public class AliOSSService extends BaseService {
         	InputStream sbs = new ByteArrayInputStream(Base64.decodeBase64(uploadBody.getFileStr())); 
         	if(uploadBody.getFileName() != null){
             	uploadToOSS(sbs,uploadBody.getFileName());
-            	return RestResponse.buildSuccessResponse(getAccessUrlPrefix()+uploadBody.getFileName());
+            	return RestResponse.success(getAccessUrlPrefix()+uploadBody.getFileName());
         	}
         	if(uploadBody.getBucketName() != null){
     			String randomFileName = System.nanoTime() + "_"+UUID.randomUUID().toString().replaceAll("-", "");
@@ -133,9 +133,9 @@ public class AliOSSService extends BaseService {
 				logger.info("ossFullPath:{}",ossFullPath);
             	uploadToOSS(sbs,ossFullPath);
             	if(FILE_FULL_PATH_TYPE == uploadBody.getReturnPathType()){
-            		return RestResponse.buildSuccessResponse(getAccessUrlPrefix() + ossFullPath);
+            		return RestResponse.success(getAccessUrlPrefix() + ossFullPath);
             	}else{
-            		return RestResponse.buildSuccessResponse(ossFullPath);
+            		return RestResponse.success(ossFullPath);
             	}
             	
         	}
@@ -181,7 +181,7 @@ public class AliOSSService extends BaseService {
 				return RestResponse.build(-1, "读取网络流异常", null);
 			}
 			uploadToOSS(inputStream,ossFullPath);
-			return RestResponse.buildSuccessResponse(returnUrl);
+			return RestResponse.success(returnUrl);
 
 		} catch (Exception e) {
 			logger.error("uploadImg失败：{}", e);
