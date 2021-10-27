@@ -1,7 +1,7 @@
 package org.opensourceframework.starter.mybatis.base.threadquery;
 
 import org.opensourceframework.base.helper.ReflectHelper;
-import org.opensourceframework.commons.spring.SpringBeanHelper;
+import org.opensourceframework.common.spring.SpringBeanHelper;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Callable;

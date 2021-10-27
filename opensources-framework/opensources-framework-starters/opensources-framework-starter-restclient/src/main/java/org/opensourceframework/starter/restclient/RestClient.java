@@ -3,7 +3,7 @@ package org.opensourceframework.starter.restclient;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import org.opensourceframework.commons.rest.ApiSignatureException;
+import org.opensourceframework.common.rest.ApiSignatureException;
 import org.apache.http.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

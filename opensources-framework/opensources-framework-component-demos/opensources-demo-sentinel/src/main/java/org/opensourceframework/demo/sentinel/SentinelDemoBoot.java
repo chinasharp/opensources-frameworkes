@@ -1,7 +1,7 @@
 package org.opensourceframework.demo.sentinel;
 
-import org.opensourceframework.commons.boot.AbstractBoot;
-import org.opensourceframework.commons.boot.OpensourceFrameworkSystem;
+import org.opensourceframework.common.boot.AbstractBoot;
+import org.opensourceframework.common.boot.OpensourceFrameworkSystem;
 
 /**
  * TODO

@@ -6,7 +6,7 @@ import org.opensourceframework.base.vo.MessageVo;
 import org.opensourceframework.demo.idempotent.biz.cache.DemoUserCache;
 import org.opensourceframework.demo.idempotent.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.demo.idempotent.biz.mq.handler.DemoUserHandler;
-import org.opensourceframework.commons.log.LoggerFactory;
+import org.opensourceframework.common.log.LoggerFactory;
 import org.opensourceframework.component.idempotent.annotation.IdempotentHandler;
 import org.opensourceframework.component.mq.annotation.MQSubscribe;
 import org.opensourceframework.component.mq.api.IMessageProcessor;

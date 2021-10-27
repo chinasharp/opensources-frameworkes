@@ -1,6 +1,6 @@
 package org.opensourceframework.demo.mq.transaction.config;
 
-import org.opensourceframework.commons.interceptor.HttpReqInfoInterceptor;
+import org.opensourceframework.common.interceptor.HttpReqInfoInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

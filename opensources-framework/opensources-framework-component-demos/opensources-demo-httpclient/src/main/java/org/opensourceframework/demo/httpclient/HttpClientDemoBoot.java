@@ -1,13 +1,13 @@
 package org.opensourceframework.demo.httpclient;
 
-import org.opensourceframework.commons.boot.OpensourceFrameworkSystem;
+import org.opensourceframework.common.boot.OpensourceFrameworkSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import org.opensourceframework.commons.boot.AbstractBoot;
-import org.opensourceframework.commons.boot.BaseBootApplication;
+import org.opensourceframework.common.boot.AbstractBoot;
+import org.opensourceframework.common.boot.BaseBootApplication;
 import org.opensourceframework.component.httpclient.config.HttpClientConfig;
 import org.opensourceframework.component.httpclient.service.HttpService;
 

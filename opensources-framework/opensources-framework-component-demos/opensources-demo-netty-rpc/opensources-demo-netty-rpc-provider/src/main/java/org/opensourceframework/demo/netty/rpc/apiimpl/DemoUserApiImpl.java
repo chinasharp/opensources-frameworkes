@@ -6,7 +6,7 @@ import org.opensourceframework.base.rest.RestResponse;
 import org.opensourceframework.demo.netty.rpc.api.IDemoUserApi;
 import org.opensourceframework.demo.netty.rpc.api.dto.request.DemoUserReqDto;
 import org.opensourceframework.demo.netty.rpc.api.dto.response.DemoUserRespDto;
-import org.opensourceframework.commons.boot.OpensourceFrameworkSystem;
+import org.opensourceframework.common.boot.OpensourceFrameworkSystem;
 import org.opensourceframework.netty.rpc.core.annotation.RpcProvider;
 import org.springframework.web.bind.annotation.PostMapping;
 

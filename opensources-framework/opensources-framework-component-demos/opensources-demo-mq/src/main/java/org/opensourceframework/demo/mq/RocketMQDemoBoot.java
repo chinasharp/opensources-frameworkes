@@ -1,8 +1,8 @@
 package org.opensourceframework.demo.mq;
 
-import org.opensourceframework.commons.boot.AbstractBoot;
-import org.opensourceframework.commons.boot.BaseBootApplication;
-import org.opensourceframework.commons.boot.OpensourceFrameworkSystem;
+import org.opensourceframework.common.boot.AbstractBoot;
+import org.opensourceframework.common.boot.BaseBootApplication;
+import org.opensourceframework.common.boot.OpensourceFrameworkSystem;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

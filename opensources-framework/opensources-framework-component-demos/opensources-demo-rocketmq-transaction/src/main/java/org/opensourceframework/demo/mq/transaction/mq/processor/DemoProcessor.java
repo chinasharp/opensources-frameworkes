@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.opensourceframework.base.rest.MessageResponse;
 import org.opensourceframework.base.vo.MessageVo;
-import org.opensourceframework.commons.log.LoggerFactory;
+import org.opensourceframework.common.log.LoggerFactory;
 import org.opensourceframework.component.mq.annotation.MQSubscribe;
 import org.opensourceframework.component.mq.api.IMessageProcessor;
 import org.opensourceframework.demo.mq.transaction.cache.DemoCache;
