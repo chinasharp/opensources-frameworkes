@@ -16,7 +16,7 @@
         <module>opensources-framework-commons</module>
         <module>opensources-framework-components</module>
         <module>opensources-framework-starters</module>
-        <module>opensources-framework-component-demos</module>
+        <module>opensources-framework-demos</module>
     </modules>
     <properties>
         <modules.version>1.0.0-SNAPSHOT</modules.version>

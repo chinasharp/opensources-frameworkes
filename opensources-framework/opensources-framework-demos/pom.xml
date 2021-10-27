@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.opensourceframework</groupId>
+        <artifactId>opensources-framework</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>opensources-framework-demos</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>opensources-demo-cache</module>
+        <!--
+        <module>opensources-user-canal-adapter</module>
+        -->
+        <module>opensources-demo-config</module>
+        <module>opensources-demo-dao</module>
+        <module>opensources-demo-grpc</module>
+        <module>opensources-demo-helper</module>
+        <module>opensources-demo-httpclient</module>
+        <module>opensources-demo-idempotent</module>
+        <module>opensources-demo-lock</module>
+        <module>opensources-demo-netty-rpc</module>
+        <module>opensources-demo-QLExpress</module>
+        <module>opensources-demo-seata</module>
+        <module>opensources-demo-seclog</module>
+        <module>opensources-demo-sentinel</module>
+        <module>opensources-demo-storm</module>
+        <module>opensources-demo-es</module>
+        <module>opensources-demo-mq</module>
+        <module>opensources-demo-oss</module>
+        <module>opensources-demo-protobuf</module>
+        <module>opensources-demo-rocketmq-transaction</module>
+        <module>opensources-demo-bloomfilter</module>
+        <module>opensources-demo-kafka</module>
+        <module>opensources-springcore-demo</module>
+    </modules>
+</project>

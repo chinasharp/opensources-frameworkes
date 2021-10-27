@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.opensourceframework</groupId>
+        <artifactId>opensources-framework-demos</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>opensources-demo-oss</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.opensourceframework</groupId>
+            <artifactId>opensources-framework-bases</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.opensourceframework</groupId>
+            <artifactId>opensources-framework-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.opensourceframework</groupId>
+            <artifactId>opensources-framework-starter-oss</artifactId>
+            <exclusions>
+                <exclusion>
+                        <groupId>com.github.ulisesbocchio</groupId>
+                        <artifactId>jasypt-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.opensourceframework</groupId>
+            <artifactId>opensources-framework-starter-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+    </dependencies>
+    
+</project>
