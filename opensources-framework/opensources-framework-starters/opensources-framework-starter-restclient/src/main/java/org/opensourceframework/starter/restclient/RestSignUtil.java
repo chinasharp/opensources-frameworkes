@@ -1,6 +1,6 @@
 package org.opensourceframework.starter.restclient;
 
-import org.opensourceframework.base.helper.RSAHelper;
+import org.opensourceframework.base.helper.codec.RSAHelper;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;

@@ -2,7 +2,7 @@ package org.opensourceframework.component.idempotent.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import org.opensourceframework.base.exception.BizException;
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import org.opensourceframework.component.idempotent.annotation.IdempotentHandler;
 import org.opensourceframework.component.redis.cache.service.IRedisCacheService;
 import org.opensourceframework.component.redis.lock.service.ILockService;

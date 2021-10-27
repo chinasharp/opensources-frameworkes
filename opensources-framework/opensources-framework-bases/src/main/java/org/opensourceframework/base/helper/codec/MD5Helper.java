@@ -1,4 +1,4 @@
-package org.opensourceframework.base.helper;
+package org.opensourceframework.base.helper.codec;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

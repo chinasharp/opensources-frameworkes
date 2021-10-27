@@ -1,6 +1,6 @@
 package org.opensourceframework.starter.mybatis.condition;
 
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.BeanDefinition;

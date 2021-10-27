@@ -8,7 +8,7 @@ import org.opensourceframework.base.eo.BaseEoUtil;
 import org.opensourceframework.base.eo.CamelToUnderline;
 import org.opensourceframework.base.exception.SystemException;
 import org.opensourceframework.base.id.SnowFlakeId;
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import org.opensourceframework.base.microservice.ServiceContext;
 import org.opensourceframework.component.dao.annotation.ShardingTable;
 import org.opensourceframework.component.dao.contant.SqlStatementContant;

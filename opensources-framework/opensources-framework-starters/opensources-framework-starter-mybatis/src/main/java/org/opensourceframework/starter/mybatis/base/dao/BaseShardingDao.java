@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import org.opensourceframework.base.db.Condition;
 import org.opensourceframework.base.eo.BaseEo;
 import org.opensourceframework.base.exception.BizException;
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import org.opensourceframework.component.dao.algorithm.HashModTable;
 import org.opensourceframework.component.dao.algorithm.HashingTable;
 import org.opensourceframework.component.dao.annotation.ShardingTable;

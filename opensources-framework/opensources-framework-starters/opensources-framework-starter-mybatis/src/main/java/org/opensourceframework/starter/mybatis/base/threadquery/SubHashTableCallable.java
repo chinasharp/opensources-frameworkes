@@ -1,6 +1,6 @@
 package org.opensourceframework.starter.mybatis.base.threadquery;
 
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import org.opensourceframework.common.spring.SpringBeanHelper;
 import org.slf4j.LoggerFactory;
 

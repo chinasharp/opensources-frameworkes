@@ -9,7 +9,7 @@ import org.opensourceframework.base.db.OperationalEnum;
 import org.opensourceframework.base.db.QueryCondition;
 import org.opensourceframework.base.eo.CamelToUnderline;
 import org.opensourceframework.base.helper.DateHelper;
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
