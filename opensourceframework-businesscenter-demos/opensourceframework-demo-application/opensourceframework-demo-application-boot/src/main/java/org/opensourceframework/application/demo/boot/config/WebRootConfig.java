@@ -1,7 +1,7 @@
 package org.opensourceframework.application.demo.boot.config;
 
 import com.alibaba.cloud.dubbo.annotation.DubboTransported;
-import org.opensourceframework.commons.interceptor.HttpReqInfoInterceptor;
+import org.opensourceframework.common.interceptor.HttpReqInfoInterceptor;
 import org.opensourceframework.starter.restclient.RestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;

@@ -1,8 +1,8 @@
 package org.opensourceframework.application.demo.boot;
 
-import org.opensourceframework.commons.boot.AbstractBoot;
-import org.opensourceframework.commons.boot.BaseBootApplication;
-import org.opensourceframework.commons.boot.OpensourceFrameworkSystem;
+import org.opensourceframework.common.boot.AbstractBoot;
+import org.opensourceframework.common.boot.BaseBootApplication;
+import org.opensourceframework.common.boot.OpensourceFrameworkSystem;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;

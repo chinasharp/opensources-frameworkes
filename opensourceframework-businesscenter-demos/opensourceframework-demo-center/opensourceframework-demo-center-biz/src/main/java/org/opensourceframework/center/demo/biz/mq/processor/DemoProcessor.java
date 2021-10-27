@@ -7,7 +7,7 @@ import org.opensourceframework.center.demo.biz.dao.eo.DemoUserEo;
 import org.opensourceframework.center.demo.biz.mq.handler.DemoHandler;
 import org.opensourceframework.base.rest.MessageResponse;
 import org.opensourceframework.base.vo.MessageVo;
-import org.opensourceframework.commons.log.LoggerFactory;
+import org.opensourceframework.common.log.LoggerFactory;
 import org.opensourceframework.component.mq.annotation.MQSubscribe;
 import org.opensourceframework.component.mq.api.IMessageProcessor;
 import org.apache.commons.lang3.exception.ExceptionUtils;
