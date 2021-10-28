@@ -294,9 +294,9 @@
     opensourceframework.mybatis.registryvo.minIdle=0
     
     # MQ消息订阅配置
-    mq.demouser.subscribe.registryvo.topic=DEMO_USER_TOPIC
-    mq.demouser.subscribe.registryvo.tag=DEMO_USER_TAG
-    mq.demouser.subscribe.registryvo.consumer=GID_DEMO_USER_CONSUMER
+    mq.demouser.subscribe.registryvo.topic=DEMO_TOPIC
+    mq.demouser.subscribe.registryvo.tag=DEMO_TAG
+    mq.demouser.subscribe.registryvo.consumer=GID_DEMO_CONSUMER
          
 ## 命名规范
     1.API接口类名命名规范:

@@ -36,7 +36,7 @@ public class DemoSender {
 		messageVo.setBizName("mq user");
 		messageVo.setMsgContent(JSON.toJSONString(reqDto));
 		// 使用常量
-		//messageSender.sendMessage(MQConstant.DEMO_USER_TOPIC, MQConstant.DEMO_USER_TAG , messageVo);
+		//messageSender.sendMessage(MQConstant.DEMO_TOPIC, MQConstant.DEMO_TAG , messageVo);
 		// 使用nacos配置
 		messageSender.sendMessage(demoUserRegistryVo.getTopic(), demoUserRegistryVo.getTag() , messageVo);
 	}
