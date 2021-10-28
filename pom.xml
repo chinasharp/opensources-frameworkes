@@ -22,7 +22,7 @@
     </licenses>
     <modules>
         <module>opensources-framework</module>
-        <module>opensources-framework-businesscenter-archetype</module>
-        <module>opensources-framework-businesscenter-demos</module>
+        <module>opensourceframework-businesscenter-archetype</module>
+        <module>opensourceframework-businesscenter-demos</module>
     </modules>
 </project>
