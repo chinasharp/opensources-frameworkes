@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.api.dto.request;
 
-import ${groupId}.common.dto.BaseDto;
+import ${groupId}.base.dto.BaseDto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 1.0.0
  *
  */
-@ApiModel(value = "DemoReqDto",description = "Demo user 请求参数对象")
+@ApiModel(value = "DemoReqDto",description = "Demo 请求参数对象")
 public class DemoReqDto extends BaseDto {
 	@ApiModelProperty(name = "account" , value = "用户账号")
 	private String account;

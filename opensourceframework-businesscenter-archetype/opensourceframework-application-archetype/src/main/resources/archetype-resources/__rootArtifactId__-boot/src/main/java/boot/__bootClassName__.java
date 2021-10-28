@@ -3,9 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.boot;
 
-import ${groupId}.framework.boot.AbstractBoot;
-import ${groupId}.framework.boot.BaseBootApplication;
-import ${groupId}.framework.boot.opensourceframeworkSystem;
+import ${groupId}.common.boot.AbstractBoot;
+import ${groupId}.common.boot.BaseBootApplication;
+import ${groupId}.common.boot.OpensourceFrameworkSystem;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,13 +19,13 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan({"${groupId}"})
-public class ApplicationBoot extends BaseBootApplication {
+@ComponentScan({"org.opensourceframework"})
+public class ${bootClassName} extends BaseBootApplication {
 	public static void main(String[] args) throws Exception {
-		new AbstractBoot(ApplicationBoot.class , args) {
+		new AbstractBoot(${bootClassName}.class , args) {
 			@Override
 			public void execute() {
-				opensourceframeworkSystem.init();
+				OpensourceFrameworkSystem.init();
 			}
 		}.run();
 	}
