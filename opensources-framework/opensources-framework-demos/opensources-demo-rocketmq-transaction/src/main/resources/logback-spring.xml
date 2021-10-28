@@ -18,11 +18,11 @@
 
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>
-            ${opensourceframework.server.logWorkDir}/${spring.application.name}/${spring.application.name}.log
+            ${opensourceframework.env.logger.workdir}/${spring.application.name}/${spring.application.name}.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>
-                ${opensourceframework.server.logWorkDir}/${spring.application.name}/${spring.application.name}-%d{yyyy-MM-dd}.%i.log.gz
+                ${opensourceframework.env.logger.workdir}/${spring.application.name}/${spring.application.name}-%d{yyyy-MM-dd}.%i.log.gz
             </fileNamePattern>
             <maxFileSize>500MB</maxFileSize><!-- 单日志文件大小 -->
             <maxHistory>30</maxHistory> <!-- 保留30天日志 -->

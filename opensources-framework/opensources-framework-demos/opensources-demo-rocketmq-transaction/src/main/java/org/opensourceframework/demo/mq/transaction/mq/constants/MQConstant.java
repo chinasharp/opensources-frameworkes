@@ -11,15 +11,15 @@ public class MQConstant {
 	/**
 	 * MQ Demo消息主题
 	 */
-	public static final String DEMO_USER_TOPIC = "DEMO_USER_TOPIC";
+	public static final String DEMO_TOPIC = "DEMO_TOPIC";
 
 	/**
 	 * MQ Demo消息TAG
 	 */
-	public static final String DEMO_USER_TAG = "DEMO_USER_TAG";
+	public static final String DEMO_TAG = "DEMO_TAG";
 
 	/**
 	 * MQ Demo消息消费者
 	 */
-	public static final String DEMO_USER_CONSUMER = "GID_DEMO_USER_CONSUMER";
+	public static final String DEMO_USER_CONSUMER = "GID_DEMO_CONSUMER";
 }

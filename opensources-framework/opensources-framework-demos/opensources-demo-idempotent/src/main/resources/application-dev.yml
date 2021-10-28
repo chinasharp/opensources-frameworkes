@@ -33,9 +33,9 @@ opensourceframework.mq.topic.config.registryvo.enableDBConfig: false
 
 #Demo
 mq.demouser.subscribe.registryvo:
-      topic: DEMO_USER_TOPIC
-      tag: DEMO_USER_TAG
-      consumer: GID_DEMO_USER_CONSUMER
+      topic: DEMO_TOPIC
+      tag: DEMO_TAG
+      consumer: GID_DEMO_CONSUMER
 
 #RestClent 连接配置
 # 连接池的最大连接数默认为50

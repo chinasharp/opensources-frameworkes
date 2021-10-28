@@ -61,7 +61,7 @@ public class Test {
 		vo.setAddress("广州市天河区");
 		MqMessageVo messageVo = new MqMessageVo();
 		messageVo.setMsgContent(JSON.toJSONString(vo));
-		ProducerHelper.sendConcurrentlyMsg(mqConfig , "DEMO_USER_TOPIC" , "DEMO_USER_TAG", messageVo);
+		ProducerHelper.sendConcurrentlyMsg(mqConfig , "DEMO_TOPIC" , "DEMO_TAG", messageVo);
 	}
 
 	private static void initFlowRules(){
