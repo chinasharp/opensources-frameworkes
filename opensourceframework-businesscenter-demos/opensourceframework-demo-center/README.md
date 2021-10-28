@@ -3,7 +3,7 @@
     #-Djava.library.path=java_native_library
     -Dopensourceframework.server.port=8081
     -Dopensourceframework.profiles.active=dev
-    -Dopensourceframework.env.logger.workdir=logs
+    -Dopensourceframework.env.logger.workdir=./logs
     -Dopensourceframework.env.logger.level=debug
     -Dopensourceframework.service.version=1.0.0
     -Dopensourceframework.env.module=opensourceframework-demo-center
