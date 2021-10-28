@@ -1,6 +1,6 @@
 package org.opensourceframework.netty.rpc.core.proxy;
 
-import org.opensourceframework.base.helper.ReflectHelper;
+import org.opensourceframework.base.helper.reflet.ReflectHelper;
 import javassist.*;
 
 import java.lang.reflect.InvocationHandler;
