@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd" name="opensources-archetype-application"
+    xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <requiredProperties>
+    <requiredProperty key="md_file_char">
+      <defaultValue>###</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="groupId">
+      <defaultValue>org.opensourceframework</defaultValue>
+    </requiredProperty>
+
+    <requiredProperty key="version" >
+      <defaultValue>1.0.0-SNAPSHOT</defaultValue>
+    </requiredProperty>
+
+    <requiredProperty key="bizName" />
+    <requiredProperty key="artifactId" >
+      <defaultValue>opensourceframework-${bizName}-application</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="bootClassName" />
+    <!-- 依赖的center bizName -->
+    <requiredProperty key="dependency-center-name" />
+
+    <requiredProperty key="package">
+      <defaultValue>org.opensourceframework.application.${bizName}</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+  <fileSets>
+    <fileSet encoding="UTF-8" filtered="true">
+      <directory></directory>
+      <includes>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+  <modules>
+    <module id="${rootArtifactId}-api" dir="__rootArtifactId__-api" name="${rootArtifactId}-api" />
+    <module id="${rootArtifactId}-biz" dir="__rootArtifactId__-biz" name="${rootArtifactId}-biz">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+
+        <fileSet encoding="UTF-8" filtered="true" packaged="false">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${rootArtifactId}-boot" dir="__rootArtifactId__-boot" name="${rootArtifactId}-boot">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.yml</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+</archetype-descriptor>

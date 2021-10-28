@@ -1,0 +1,71 @@
+# nacos配置组
+opensourceframework.configs.group: ${opensourceframework.env.module}
+# dubbo注册服务组
+opensourceframework.dubbo.services.group: ${opensourceframework.env.module}
+# 服务版本
+opensourceframework.services.version: 1.0.0
+# web-server访问端口
+server.port: ${opensourceframework.server.port}
+
+spring:
+  profiles:
+    active: ${opensourceframework.profiles.active}
+  application:
+    name: ${opensourceframework.env.module}
+  aop:
+    proxy-target-class: true
+  main:
+    allow-bean-definition-overriding: true
+
+  #服务注册中心与配置中心配置
+  cloud:
+    nacos:
+      username: ${opensourceframework.service.server.username}
+      password: ${opensourceframework.service.server.password}
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: ${opensourceframework.service.server.address}
+        group: ${opensourceframework.services.group}
+        namespace: ${opensourceframework.service.server.namespace}
+      config:
+        server-addr: ${opensourceframework.service.server.address}
+        group: ${opensourceframework.configs.group}
+        namespace: ${opensourceframework.service.server.namespace}
+        shared-data-ids: ${opensourceframework.config.dataIds}
+        refreshable-dataids: ${opensourceframework.config.dataIds}
+
+dubbo:
+  cloud:
+    # The subscribed services in consumer side
+    subscribed-services: opensourceframework-${dependency-center-name}-center
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+      threads: 250
+  consumer:
+    check: false
+  registry:
+    address: spring-cloud://localhost
+
+ribbon:
+  nacos:
+    enabled: true
+
+
+#配置生产者服务
+#在${package}.biz.ctrl.DemoController 中对Dubbo服务的声明：
+#    @Reference(group = "${provider.xxxxx.service.group}" , version = "${provider.xxxxx.service.version}" , protocol = "${provider.xxxx.service.protocol}")
+#    private IDemoApi demoUserApi;
+#在${package}.biz.feignclients.feignservice.DemoFeignService 中RestFull服务名的声明
+#    @FeignClient(name="${provider.xxxx.service.group}" , path = "/v1/demo")
+#    public interface DemoFeignService{
+#    }
+#provider.${dependency-center-name}.service.group: opensourceframework-${dependency-center-name}-center
+#provider.${dependency-center-name}.service.version: 1.0.0
+#provider.${dependency-center-name}.service.protocol: dubbo
+
+#provider.xxxx.service.group: opensourceframework-xxxx-center
+#provider.xxxx.service.version: opensourceframework-xxxx-center
+#provider.xxxx.service.protocol: dubbo

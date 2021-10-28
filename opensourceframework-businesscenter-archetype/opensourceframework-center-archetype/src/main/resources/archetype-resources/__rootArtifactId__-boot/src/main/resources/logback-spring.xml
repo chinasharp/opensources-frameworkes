@@ -1,0 +1,67 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 读取spring 上下文环境信息-->
+    <springProperty scope="context" name="spring.application.name" source="opensourceframework.env.module" />
+    <springProperty scope="context" name="opensourceframework.env.logger.version" source="nacos.service.version" defaultValue="1.0.0"/>
+    <springProperty scope="context" name="opensourceframework.env.logger.workdir" source="opensourceframework.env.logger.workdir" defaultValue="./logs"/>
+    <springProperty scope="context" name="opensourceframework.env.logger.level" source="opensourceframework.env.logger.level" defaultValue="INFO"/>
+
+    <!-- console日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %-5level [v:${symbol_dollar}{opensourceframework.env.logger.version}] [h:${symbol_dollar}{server.localHost}] [m:${symbol_dollar}{spring.application.name}] [reqId:%X{req.requestId}] [%thread] %logger [L:%line] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>
+            ${symbol_dollar}{opensourceframework.env.logger.workdir}/${symbol_dollar}{spring.application.name}/${symbol_dollar}{spring.application.name}.log
+        </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${symbol_dollar}{opensourceframework.env.logger.workdir}/${symbol_dollar}{spring.application.name}/${symbol_dollar}{spring.application.name}-%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <maxFileSize>500MB</maxFileSize><!-- 单日志文件大小 -->
+            <maxHistory>30</maxHistory> <!-- 保留30天日志 -->
+            <totalSizeCap>20GB</totalSizeCap> <!-- 日志总量大小，超过该值旧的日志文件将被清理-->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %-5level [v:${symbol_dollar}{opensourceframework.env.logger.version}] [h:${symbol_dollar}{opensourceframework.server.localHost}] [m:${symbol_dollar}{spring.application.name}] [reqId:%X{req.requestId}] [%thread] %logger [L:%line] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- project default level -->
+    <logger name="${groupId}" level="debug"/>
+    <logger name="org" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <!--log4jdbc -->
+    <logger name="jdbc.sqltiming" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="com.ibatis" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="java.sql.Connection" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="java.sql.Statement" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="java.sql.PreparedStatement" level="${symbol_dollar}{opensourceframework.env.logger.level}"/>
+    <logger name="RocketmqClient" level="ERROR" />
+    <logger name="org.opensourceframework.starter.encdec.configuration" level="ERROR" />
+    <logger name="org.redisson.connection" level="ERROR" />
+    <logger name="org.apache.commons.beanutils.converters" level="ERROR"/>
+    <logger name="org.mybatis.spring.SqlSessionUtils" level="ERROR"/>
+
+    <springProfile name="!prod">
+        <root level="${symbol_dollar}{opensourceframework.env.logger.level}">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+    <springProfile name="prod">
+        <root level="${symbol_dollar}{opensourceframework.env.logger.level}">
+            <appender-ref ref="ROLLING"/>
+        </root>
+    </springProfile>
+
+</configuration>
